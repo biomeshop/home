@@ -113,7 +113,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 
 .hero-panel {
-  display: flex; flex-direction: column; justify-content: space-between; gap: 22px; padding: 24px;
+  display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; padding: 24px;
   border-radius: 26px; border: 1px solid rgba(203, 134, 255, 0.18);
   background:
     linear-gradient(180deg, rgba(18, 15, 34, 0.88), rgba(10, 8, 21, 0.92)),
@@ -121,8 +121,15 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), var(--glow);
 }
 .hero-panel strong { display: block; font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif; font-size: 2rem; line-height: 1.08; }
-.owner-name {
-  font-size: clamp(2.6rem, 5vw, 3.4rem);
+.hero-panel strong.owner-name {
+  display: block;
+  font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(3.6rem, 7vw, 5rem) !important;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-top: 4px;
+  margin-bottom: 6px;
   background: linear-gradient(120deg, #ffd666, #ffb347 30%, #fff1a8 55%, #ffcc66 78%, #ffd666 100%);
   background-size: 220% 220%;
   -webkit-background-clip: text;
@@ -133,6 +140,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 .hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
 .hero-metrics > div { padding: 14px; border-radius: 18px; background: rgba(255,255,255,0.035); border: 1px solid rgba(203,134,255,0.1); }
+.hero-metrics { margin-top: 6px; }
 .metric-value {
   display:block;
   margin-bottom:6px;
@@ -147,6 +155,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 
 .card-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; }
+.inventory-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; margin-top: 18px; }
 .card {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
@@ -163,6 +172,22 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .card-copy h3 { font-size: clamp(2.2rem, 3vw, 3.2rem); text-shadow: 0 0 18px rgba(154, 99, 255, 0.2); }
 
 .status-row { display:grid; gap:8px; }
+.price-row { display:grid; gap:8px; }
+.price-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 2px 0;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: 1.2rem;
+  background: linear-gradient(120deg, #ffd666, #ffb347 30%, #fff1a8 55%, #ffcc66 78%, #ffd666 100%);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 16px rgba(255, 214, 102, 0.24);
+  animation: goldShift 6s linear infinite;
+}
 .availability-pill {
   display:inline-flex; align-items:center; justify-content:center; width:fit-content; min-width:120px;
   padding:10px 14px; border-radius:999px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; font-size:0.78rem;
@@ -270,6 +295,58 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 .placeholder-card h3 { font-size:1.8rem; line-height:1.04; }
 
+.inventory-card {
+  min-height: 248px;
+  grid-column: span 4;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 22px;
+}
+
+.inventory-visual-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(10, 8, 21, 0.72);
+  min-height: 190px;
+}
+
+.inventory-visual {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.inventory-visual-label {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(10,8,21,0.6);
+  color: #fdfaff;
+  font-size: 0.85rem;
+  border: 1px solid rgba(203,134,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.inventory-card.is-available {
+  box-shadow:
+    inset 0 0 0 1px rgba(127,255,0,0.12),
+    0 0 0 1px rgba(127,255,0,0.18),
+    0 0 26px rgba(127,255,0,0.1);
+}
+
+.inventory-card.is-sold {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,0,0,0.1),
+    0 0 0 1px rgba(255,0,0,0.16),
+    0 0 22px rgba(255,0,0,0.08);
+}
+
 .panorama-modal[hidden] { display:none; }
 .panorama-modal {
   position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 18px;
@@ -303,16 +380,22 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   .hero { min-height: 640px; }
   .section-heading, .viewer-header { align-items:start; flex-direction:column; }
 }
+@media (max-width: 1200px) {
+  .inventory-card { grid-column: span 6; }
+}
 @media (max-width: 820px) {
   .scenic-card, .placeholder-card { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
   .page-shell { width: min(100% - 18px, 1320px); margin: 10px auto 28px; }
   .hero, .featured-card, .scenic-card, .placeholder-card { padding: 18px; }
+  .inventory-card { grid-column: 1 / -1; padding: 18px; }
   .hero { min-height: 560px; }
   .hero-metrics { grid-template-columns: 1fr; }
   .panorama-frame { padding: 10px; }
   .panorama-viewport { height: 280px; }
+  .inventory-visual-wrap { min-height: 170px; }
+  .inventory-visual { height: 170px; }
   .viewer-controls-inside { left: 14px; right: auto; bottom: 14px; flex-wrap: wrap; }
   .viewer-overlay { left: 14px; right: auto; bottom: 72px; max-width: 78%; }
   .panorama-modal { padding: 10px; }

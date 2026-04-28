@@ -1,5 +1,39 @@
 import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.1/+esm';
 
+const biomeInventory = [
+  ['mushroom', 'Medium Mushroom Island', '$7m', 'Sold'],
+  ['mushroom', 'Medium Mushroom Island', '$8m', 'Available'],
+  ['mushroom', 'Large Mushroom Island', '$19m', 'Available'],
+  ['mushroom', 'Super Large Mushroom Island', '$23m', 'Available'],
+  ['mushroom', 'Smallest Mushroom Island', '$12m', 'Available'],
+  ['mushroom', 'Mushroom Behind Spawn', '$25m', 'Available'],
+  ['hybrid', 'Biome Blend Isle', '$4m', 'Available'],
+  ['badlands', 'Crimson Heart Badlands', '$3m', 'Sold'],
+  ['mountain', 'Icewraith Hollow', '$4m', 'Available'],
+  ['mountain', 'Frostbound Crown', '$4m', 'Sold'],
+  ['mushroom', 'Small Mushroom Island', '$2.5m', 'Sold'],
+  ['mushroom', 'Medium Mushroom Island', '$7.9m', 'Sold'],
+  ['cherry', 'Large Natural Cherry Grove', '$9.5m', 'Sold'],
+  ['mangroove', 'Large Natural Mangrove Grove', '$3.4m', 'Available'],
+  ['pale', 'Large Mother Pale Biome', '$4.8m', 'Sold'],
+  ['pale', 'Circular Hollow Pale Biome', '$8.6m', 'Sold'],
+  ['mangroove', 'Largest Mangrove Near Border', '$2m', 'Available'],
+  ['hybrid', 'Cool Donut Island', '$4m', 'Sold'],
+  ['jungle', 'Isolated Lonely Jungle', '$4m', 'Sold'],
+  ['hybrid', 'Mirror Mounds Islands', '$5m', 'Available'],
+  ['hybrid', 'Secluded Geode Desert', '$?m', 'Available'],
+];
+
+const biomeDescriptions = [
+  'A calm natural layout with strong build space and a clean approach line from every side.',
+  'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
+  'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
+  'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
+  'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
+  'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
+  'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
+];
+
 function readPanoData(viewport) {
   return {
     fullWidth: Number(viewport.dataset.fullWidth),
@@ -16,6 +50,42 @@ function resizeViewer(viewer, viewport) {
     width: `${viewport.clientWidth}px`,
     height: `${viewport.clientHeight}px`,
   });
+}
+
+function renderInventoryCards() {
+  const inventoryGrid = document.getElementById('inventory-grid');
+  if (!inventoryGrid) {
+    return;
+  }
+
+  inventoryGrid.innerHTML = biomeInventory.map(([label, name, price, status], index) => {
+    const description = biomeDescriptions[index % biomeDescriptions.length];
+    const isAvailable = status === 'Available';
+    const statusClass = isAvailable ? 'availability-live' : 'availability-hold';
+    const cardClass = isAvailable ? 'is-available' : 'is-sold';
+
+    return `
+      <article class="card inventory-card ${cardClass}">
+        <div class="inventory-visual-wrap">
+          <img class="inventory-visual" src="./assets/visual-soon.png" alt="Visuals will be added soon placeholder">
+          <span class="inventory-visual-label">Visual soon</span>
+        </div>
+        <div class="card-copy">
+          <div class="card-copy-top">
+            <p class="card-label">${label}</p>
+            <h3>${name}</h3>
+          </div>
+          <p class="card-description">${description}</p>
+          <div class="price-row">
+            <span class="price-pill">${price}</span>
+          </div>
+          <div class="status-row">
+            <span class="availability-pill ${statusClass}">${status}</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
 const modal = document.getElementById('panorama-modal');
@@ -172,6 +242,8 @@ function createPanoramaViewer(entry) {
     }
   });
 }
+
+renderInventoryCards();
 
 document.querySelectorAll('.panorama-entry').forEach((entry) => {
   createPanoramaViewer(entry);
