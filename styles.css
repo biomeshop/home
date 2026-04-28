@@ -144,7 +144,12 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   display:inline-flex; align-items:center; justify-content:center; width:fit-content; min-width:120px;
   padding:10px 14px; border-radius:999px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; font-size:0.78rem;
 }
-.availability-live { color:#dffff0; background:rgba(46,201,103,0.14); border:1px solid rgba(87,240,141,0.38); box-shadow:0 0 28px rgba(87,240,141,0.18); }
+.availability-live {
+  color:#effff5;
+  background:rgba(56, 255, 126, 0.2);
+  border:1px solid rgba(88, 255, 147, 0.62);
+  box-shadow:0 0 34px rgba(88, 255, 147, 0.34), inset 0 0 18px rgba(88, 255, 147, 0.12);
+}
 .availability-hold { color:#ffe7f0; background:rgba(255,92,136,0.14); border:1px solid rgba(255,92,136,0.34); box-shadow:0 0 28px rgba(255,92,136,0.18); }
 
 .panorama-card { display:grid; gap:14px; }
@@ -170,7 +175,11 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   border: 1px solid rgba(203,134,255,0.12);
 }
 .panorama-entry.is-available .panorama-frame {
-  box-shadow: inset 0 0 0 1px rgba(87,240,141,0.12), 0 0 0 1px rgba(87,240,141,0.16), 0 0 24px rgba(87,240,141,0.16);
+  box-shadow:
+    inset 0 0 0 1px rgba(88,255,147,0.2),
+    0 0 0 1px rgba(88,255,147,0.34),
+    0 0 34px rgba(88,255,147,0.24),
+    0 0 74px rgba(88,255,147,0.12);
 }
 .panorama-entry.is-unavailable .panorama-frame {
   box-shadow: inset 0 0 0 1px rgba(255,92,136,0.12), 0 0 0 1px rgba(255,92,136,0.16), 0 0 24px rgba(255,92,136,0.16);
