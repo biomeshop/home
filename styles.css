@@ -16,6 +16,11 @@
   --radius-xl: 34px;
   --radius-lg: 24px;
   --viewer-height: 360px;
+  --status-glow-available: rgba(127, 255, 0, 0.22);
+  --status-glow-available-strong: rgba(127, 255, 0, 0.36);
+  --status-glow-sold: rgba(255, 0, 0, 0.2);
+  --status-glow-sold-strong: rgba(255, 0, 0, 0.34);
+  --card-white-glow: rgba(255, 255, 255, 0.05);
 }
 
 * { box-sizing: border-box; }
@@ -110,6 +115,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   border: 1px solid rgba(203, 134, 255, 0.2);
   background: rgba(17, 14, 33, 0.54);
   color: #f5f0ff;
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
 .hero-panel {
@@ -119,6 +125,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
     linear-gradient(180deg, rgba(18, 15, 34, 0.88), rgba(10, 8, 21, 0.92)),
     radial-gradient(circle at top, rgba(255, 214, 102, 0.1), transparent 44%);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), var(--glow);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 .hero-panel strong { display: block; font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif; font-size: 2rem; line-height: 1.08; }
 .hero-panel strong.owner-name {
@@ -140,6 +147,9 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 .hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
 .hero-metrics > div { padding: 14px; border-radius: 18px; background: rgba(255,255,255,0.035); border: 1px solid rgba(203,134,255,0.1); }
+.hero-metrics > div {
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
 .hero-metrics { margin-top: 6px; }
 .metric-value {
   display:block;
@@ -160,16 +170,28 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
     linear-gradient(180deg, rgba(17, 14, 33, 0.92), rgba(10, 8, 21, 0.96)),
     radial-gradient(circle at top right, rgba(154, 99, 255, 0.08), transparent 34%);
   box-shadow: var(--shadow);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:minmax(260px, 340px) minmax(0, 1fr); gap:24px; padding:24px; }
 .scenic-card { grid-column: span 6; display:grid; gap:18px; padding:22px; }
 
 .card-copy { display:flex; flex-direction:column; gap:16px; padding:8px 4px 8px 2px; }
 .card-copy-top { display:grid; gap:8px; }
-.card-copy h3 { font-size: clamp(2.2rem, 3vw, 3.2rem); text-shadow: 0 0 18px rgba(154, 99, 255, 0.2); }
+.card-copy h3 {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: clamp(2rem, 2.6vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  text-shadow: 0 0 18px rgba(154, 99, 255, 0.2);
+}
+
+.inventory-card .card-copy h3 {
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+}
 
 .status-row { display:grid; gap:8px; }
 .price-row { display:grid; gap:8px; }
@@ -196,13 +218,13 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   color:#f4ffe8;
   background:rgba(127, 255, 0, 0.18);
   border:1px solid rgba(127, 255, 0, 0.72);
-  box-shadow:0 0 34px rgba(127, 255, 0, 0.38), inset 0 0 18px rgba(127, 255, 0, 0.16);
+  box-shadow:0 0 38px rgba(127, 255, 0, 0.44), inset 0 0 18px rgba(127, 255, 0, 0.18);
 }
 .availability-hold {
   color:#fff0f0;
   background:rgba(255, 0, 0, 0.16);
   border:1px solid rgba(255, 0, 0, 0.62);
-  box-shadow:0 0 28px rgba(255, 0, 0, 0.28), inset 0 0 14px rgba(255, 0, 0, 0.12);
+  box-shadow:0 0 32px rgba(255, 0, 0, 0.34), inset 0 0 14px rgba(255, 0, 0, 0.14);
 }
 
 .panorama-card { display:grid; gap:14px; }
@@ -302,6 +324,12 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   align-content: start;
   gap: 16px;
   padding: 22px;
+  --status-glow-soft: var(--status-glow-available);
+  --status-glow-strong: var(--status-glow-available-strong);
+  box-shadow:
+    var(--shadow),
+    inset 0 0 0 1px rgba(255,255,255,0.02),
+    0 0 18px var(--card-white-glow);
 }
 
 .inventory-visual-wrap {
@@ -334,17 +362,60 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 
 .inventory-card.is-available {
-  box-shadow:
-    inset 0 0 0 1px rgba(127,255,0,0.12),
-    0 0 0 1px rgba(127,255,0,0.18),
-    0 0 26px rgba(127,255,0,0.1);
+  --status-glow-soft: var(--status-glow-available);
+  --status-glow-strong: var(--status-glow-available-strong);
 }
 
 .inventory-card.is-sold {
+  --status-glow-soft: var(--status-glow-sold);
+  --status-glow-strong: var(--status-glow-sold-strong);
+}
+
+.inventory-card .card-copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.inventory-card .card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.inventory-card .price-row {
+  margin-top: 2px;
+}
+
+.inventory-card .status-row {
+  margin-top: auto;
+  padding-top: 4px;
+  align-self: start;
+}
+
+.hero-panel:hover,
+.card:hover {
+  border-color: rgba(203, 134, 255, 0.34);
+  box-shadow: var(--shadow), 0 0 28px rgba(154, 99, 255, 0.16), 0 0 16px var(--card-white-glow);
+  transform: translateY(-2px);
+}
+
+.inventory-card:hover {
   box-shadow:
-    inset 0 0 0 1px rgba(255,0,0,0.1),
-    0 0 0 1px rgba(255,0,0,0.16),
-    0 0 22px rgba(255,0,0,0.08);
+    var(--shadow),
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 0 18px var(--card-white-glow),
+    0 0 22px var(--status-glow-soft),
+    0 0 42px var(--status-glow-strong);
+}
+
+.hero-pills span:hover,
+.hero-metrics > div:hover {
+  border-color: rgba(203, 134, 255, 0.3);
+  box-shadow: 0 0 18px rgba(154, 99, 255, 0.1);
+  transform: translateY(-1px);
 }
 
 .panorama-modal[hidden] { display:none; }
