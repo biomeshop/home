@@ -3,62 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Greats of the World</title>
+  <title>BiomeShop</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.1/index.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <div class="page-shell">
     <header class="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-glow hero-glow-left"></div>
+      <div class="hero-glow hero-glow-right"></div>
+
       <div class="hero-copy">
-        <p class="eyebrow">World Panorama Dashboard</p>
-        <h1>The Greats of the World</h1>
+        <p class="eyebrow">Number One Premium Shop Of Biomes</p>
+        <h1>BiomeShop</h1>
         <p class="hero-text">
-          A curated wall of monumental cityscapes, skyline legends, and future entries waiting to be explored.
+          Premium biome previews with immersive 360 showcases, curated stock, and a dark modern storefront built for focused browsing.
         </p>
+        <div class="hero-pills" aria-label="Shop highlights">
+          <span>Darkmode Storefront</span>
+          <span>Premium 360 Preview</span>
+          <span>Modern Biome Catalog</span>
+        </div>
       </div>
-      <div class="hero-stat">
-        <span class="stat-label">Featured View</span>
-        <strong>Victoria Harbour Panorama</strong>
-        <span class="stat-note">Drag, swipe, zoom, and expand the scene.</span>
-      </div>
+
+      <aside class="hero-panel">
+        <p class="stat-label">Featured Rotation</p>
+        <strong>Premium Archipelago Bundle</strong>
+        <p class="stat-note">Explore a focused biome list with immersive previews and status-led availability at a glance.</p>
+        <div class="hero-metrics">
+          <div>
+            <span class="metric-value">03</span>
+            <span class="metric-label">Live biomes</span>
+          </div>
+          <div>
+            <span class="metric-value">360</span>
+            <span class="metric-label">Preview mode</span>
+          </div>
+          <div>
+            <span class="metric-value">24/7</span>
+            <span class="metric-label">Store access</span>
+          </div>
+        </div>
+      </aside>
     </header>
 
     <main>
       <section class="section-heading">
         <div>
-          <p class="section-kicker">Curated Collection</p>
-          <h2>Destination Cards</h2>
+          <p class="section-kicker">Biome Inventory</p>
+          <h2>The Biome List</h2>
         </div>
-        <p class="section-note">The first card is live. The remaining slots are reserved for future greats.</p>
+        <p class="section-note">Focused premium listings with cleaner hierarchy, responsive previews, and instant status visibility.</p>
       </section>
 
       <section class="card-grid">
-        <article class="card featured-card panorama-entry" id="featured-card">
+        <article class="card featured-card panorama-entry is-available" id="featured-card">
           <div class="card-copy">
             <div class="card-copy-top">
-              <p class="card-label">Featured Great</p>
+              <p class="card-label">Premium Biome</p>
               <h3>Harbour Crown</h3>
-              <p class="card-region">Hong Kong SAR, Imagined Archive Edition</p>
             </div>
             <p class="card-description">
-              A cinematic skyline basin where steel towers, drifting cloudbanks, and harbour light form a panoramic stage for the modern world.
+              A prestige waterfront biome with storm-lit skylines, deep blue channels, and a cinematic trading-district atmosphere.
             </p>
-            <ul class="fact-list" aria-label="Location details">
-              <li>Skyline Index: 98.4</li>
-              <li>Best Hour: Stormbreak Sunset</li>
-              <li>Signature Mood: Electric Calm</li>
-            </ul>
+            <div class="status-row">
+              <span class="availability-pill availability-live">Available</span>
+            </div>
           </div>
 
           <div class="panorama-card">
             <div class="viewer-header">
               <div>
-                <p class="viewer-title">Interactive Panorama</p>
-                <p class="viewer-help">Drag or swipe to explore. Use the controls to zoom or recenter.</p>
+                <p class="viewer-title">360 Biome Preview</p>
+                <p class="viewer-help">Drag, swipe, zoom, or open the focused modal preview.</p>
               </div>
               <button class="expand-button" type="button" aria-expanded="false">
-                Expand View
+                Open Focus View
               </button>
             </div>
 
@@ -79,45 +100,40 @@
                 <div class="psv-host" aria-hidden="true"></div>
                 <div class="viewer-badge">360</div>
                 <div class="viewer-overlay">
-                  <span>Drag to look around</span>
-                  <span>Photo Sphere Viewer</span>
+                  <span>Premium preview</span>
                 </div>
-              </div>
-
-              <div class="viewer-controls" aria-label="Panorama controls">
-                <button type="button" data-action="zoom-in">+</button>
-                <button type="button" data-action="zoom-out">-</button>
-                <button type="button" data-action="reset">Reset</button>
+                <div class="viewer-controls viewer-controls-inside" aria-label="Panorama controls">
+                  <button type="button" data-action="zoom-in">+</button>
+                  <button type="button" data-action="zoom-out">-</button>
+                  <button type="button" data-action="reset">Reset</button>
+                </div>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="card scenic-card panorama-entry">
+        <article class="card scenic-card panorama-entry is-available">
           <div class="card-copy">
             <div class="card-copy-top">
-              <p class="card-label">New Great</p>
+              <p class="card-label">Rare Biome</p>
               <h3>Orbital Garden</h3>
-              <p class="card-region">Metropolitan Ring, Atlas Fiction</p>
             </div>
             <p class="card-description">
-              A tiny-planet panorama where racetracks, formal gardens, and urban sprawl fold into a globe-like horizon.
+              A spherical urban biome with circuit fields, dense city edges, and a high-altitude survey look rarely found in public seeds.
             </p>
-            <ul class="fact-list" aria-label="Location details">
-              <li>Orbit Radius: 360 Urban</li>
-              <li>Focus Point: Grand Circuit</li>
-              <li>Viewing Tone: Skybound Survey</li>
-            </ul>
+            <div class="status-row">
+              <span class="availability-pill availability-live">Available</span>
+            </div>
           </div>
 
           <div class="panorama-card">
             <div class="viewer-header">
               <div>
-                <p class="viewer-title">Interactive Panorama</p>
-                <p class="viewer-help">Drag with the mouse to spin around the orbit.</p>
+                <p class="viewer-title">360 Biome Preview</p>
+                <p class="viewer-help">Smooth responsive controls with a single focused preview mode.</p>
               </div>
               <button class="expand-button" type="button" aria-expanded="false">
-                Expand View
+                Open Focus View
               </button>
             </div>
 
@@ -138,45 +154,40 @@
                 <div class="psv-host" aria-hidden="true"></div>
                 <div class="viewer-badge">360</div>
                 <div class="viewer-overlay">
-                  <span>Mouse-friendly orbit</span>
-                  <span>Photo Sphere Viewer</span>
+                  <span>Rare orbit biome</span>
                 </div>
-              </div>
-
-              <div class="viewer-controls" aria-label="Panorama controls">
-                <button type="button" data-action="zoom-in">+</button>
-                <button type="button" data-action="zoom-out">-</button>
-                <button type="button" data-action="reset">Reset</button>
+                <div class="viewer-controls viewer-controls-inside" aria-label="Panorama controls">
+                  <button type="button" data-action="zoom-in">+</button>
+                  <button type="button" data-action="zoom-out">-</button>
+                  <button type="button" data-action="reset">Reset</button>
+                </div>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="card scenic-card panorama-entry">
+        <article class="card scenic-card panorama-entry is-unavailable">
           <div class="card-copy">
             <div class="card-copy-top">
-              <p class="card-label">New Great</p>
+              <p class="card-label">Vault Hold</p>
               <h3>Circus Meridian</h3>
-              <p class="card-region">Harbour Quarter, Atlas Fiction</p>
             </div>
             <p class="card-description">
-              A swirling tent-city panorama balancing towers, rail lines, and fairground geometry into a compact spherical scene.
+              A compact spectacle biome where striped structures, rail corridors, and skyline rings combine into a striking event-zone profile.
             </p>
-            <ul class="fact-list" aria-label="Location details">
-              <li>Centerpiece: Golden Big Top</li>
-              <li>Scene Type: Urban Spiral</li>
-              <li>Atmosphere: Bright Weather Surge</li>
-            </ul>
+            <div class="status-row">
+              <span class="availability-pill availability-hold">Unavailable</span>
+            </div>
           </div>
 
           <div class="panorama-card">
             <div class="viewer-header">
               <div>
-                <p class="viewer-title">Interactive Panorama</p>
-                <p class="viewer-help">Use drag, zoom, and reset controls to inspect the circular horizon.</p>
+                <p class="viewer-title">360 Biome Preview</p>
+                <p class="viewer-help">Preview the hold listing in a cleaner, darker focused viewer.</p>
               </div>
               <button class="expand-button" type="button" aria-expanded="false">
-                Expand View
+                Open Focus View
               </button>
             </div>
 
@@ -197,33 +208,46 @@
                 <div class="psv-host" aria-hidden="true"></div>
                 <div class="viewer-badge">360</div>
                 <div class="viewer-overlay">
-                  <span>Spin the skyline</span>
-                  <span>Photo Sphere Viewer</span>
+                  <span>Vault hold</span>
                 </div>
-              </div>
-
-              <div class="viewer-controls" aria-label="Panorama controls">
-                <button type="button" data-action="zoom-in">+</button>
-                <button type="button" data-action="zoom-out">-</button>
-                <button type="button" data-action="reset">Reset</button>
+                <div class="viewer-controls viewer-controls-inside" aria-label="Panorama controls">
+                  <button type="button" data-action="zoom-in">+</button>
+                  <button type="button" data-action="zoom-out">-</button>
+                  <button type="button" data-action="reset">Reset</button>
+                </div>
               </div>
             </div>
           </div>
         </article>
 
         <article class="card placeholder-card">
-          <span class="placeholder-index">02</span>
-          <h3>Reserved for Next Landmark</h3>
-          <p>Future panorama slot for another world great.</p>
+          <span class="placeholder-index">04</span>
+          <h3>Nether Bloom Pack</h3>
+          <p>Premium biome slot reserved for a future volcanic catalog release.</p>
         </article>
 
         <article class="card placeholder-card">
-          <span class="placeholder-index">03</span>
-          <h3>Awaiting Capture</h3>
-          <p>Designed placeholder for a forthcoming skyline or natural wonder.</p>
+          <span class="placeholder-index">05</span>
+          <h3>Frozen Crown Vault</h3>
+          <p>Queued for the next marketplace rotation with panoramic support.</p>
         </article>
       </section>
     </main>
+  </div>
+
+  <div class="panorama-modal" id="panorama-modal" hidden>
+    <div class="panorama-modal-backdrop" data-close-modal></div>
+    <div class="panorama-modal-dialog" role="dialog" aria-modal="true" aria-label="Focused panorama preview">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close focused panorama">Close</button>
+      <div class="panorama-modal-stage">
+        <div class="psv-modal-host" id="psv-modal-host"></div>
+        <div class="viewer-controls viewer-controls-inside viewer-controls-modal" aria-label="Panorama controls">
+          <button type="button" data-modal-action="zoom-in">+</button>
+          <button type="button" data-modal-action="zoom-out">-</button>
+          <button type="button" data-modal-action="reset">Reset</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="./app.js"></script>
