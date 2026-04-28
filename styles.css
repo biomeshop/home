@@ -1,0 +1,436 @@
+:root {
+  --bg: #f3efe7;
+  --surface: rgba(255, 249, 240, 0.78);
+  --surface-strong: #fffaf3;
+  --text: #1d2428;
+  --muted: #5d696d;
+  --line: rgba(29, 36, 40, 0.12);
+  --accent: #bd6d3b;
+  --accent-deep: #8f4c22;
+  --shadow: 0 24px 80px rgba(33, 44, 52, 0.16);
+  --radius-xl: 30px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --viewer-height: 360px;
+  --viewer-height-expanded: 620px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(252, 190, 124, 0.45), transparent 26%),
+    radial-gradient(circle at top left, rgba(112, 161, 201, 0.28), transparent 24%),
+    linear-gradient(180deg, #f6f1e8 0%, #eee6d8 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.24), transparent 55%);
+}
+
+.page-shell {
+  width: min(1220px, calc(100% - 32px));
+  margin: 24px auto 48px;
+}
+
+.hero,
+.card,
+.panorama-frame {
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+  gap: 24px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(255, 250, 243, 0.92), rgba(244, 236, 224, 0.72));
+  box-shadow: var(--shadow);
+}
+
+.eyebrow,
+.section-kicker,
+.card-label,
+.viewer-title,
+.stat-label,
+.placeholder-index {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  color: var(--accent-deep);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif;
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+h1 {
+  margin-top: 12px;
+  font-size: clamp(2.8rem, 5vw, 4.9rem);
+  max-width: 12ch;
+}
+
+.hero-text,
+.section-note,
+.card-description,
+.viewer-help,
+.placeholder-card p,
+.stat-note,
+.card-region {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(31, 55, 75, 0.94);
+  color: #f4ede0;
+}
+
+.hero-stat strong {
+  display: block;
+  font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif;
+  font-size: 1.9rem;
+  line-height: 1.1;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin: 34px 0 18px;
+}
+
+.section-heading h2 {
+  margin-top: 6px;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.featured-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 22px;
+  padding: 24px;
+}
+
+.scenic-card {
+  grid-column: span 6;
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 4px 8px 2px;
+}
+
+.card-copy-top {
+  display: grid;
+  gap: 8px;
+}
+
+.card-copy h3 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.fact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fact-list li {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(189, 109, 59, 0.09);
+  border: 1px solid rgba(189, 109, 59, 0.16);
+  color: #5e3823;
+}
+
+.panorama-card {
+  display: grid;
+  gap: 14px;
+}
+
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+}
+
+.expand-button,
+.viewer-controls button {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.expand-button {
+  min-width: 144px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff8f0;
+  box-shadow: 0 14px 28px rgba(143, 76, 34, 0.22);
+}
+
+.expand-button:hover,
+.expand-button:focus-visible,
+.viewer-controls button:hover,
+.viewer-controls button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.expand-button:focus-visible,
+.viewer-controls button:focus-visible,
+.panorama-viewport:focus-visible {
+  outline: 3px solid rgba(53, 120, 166, 0.35);
+  outline-offset: 3px;
+}
+
+.panorama-frame {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(247, 243, 237, 0.8), rgba(235, 227, 217, 0.86)),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.25), transparent);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.panorama-viewport {
+  position: relative;
+  height: var(--viewer-height);
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #dce9ef 0%, #adc3cf 100%);
+  cursor: grab;
+  transition: height 260ms ease;
+  touch-action: none;
+}
+
+.panorama-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.panorama-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.psv-host,
+.psv-container {
+  width: 100%;
+  height: 100%;
+}
+
+.psv-container {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #dce9ef 0%, #adc3cf 100%);
+}
+
+.psv-navbar {
+  display: none;
+}
+
+.viewer-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #f5efe5;
+  background: rgba(16, 26, 34, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.viewer-overlay {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: min(72%, 240px);
+}
+
+.viewer-overlay span {
+  display: inline-flex;
+  align-self: end;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(16, 26, 34, 0.72);
+  color: #fff8f0;
+  font-size: 0.85rem;
+  backdrop-filter: blur(12px);
+}
+
+.viewer-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.viewer-controls button {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(29, 36, 40, 0.08);
+  color: var(--text);
+}
+
+.viewer-controls button[data-action="reset"] {
+  padding-inline: 18px;
+}
+
+.featured-card.expanded .panorama-viewport {
+  height: var(--viewer-height-expanded);
+}
+
+.featured-card.expanded {
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+}
+
+.scenic-card.expanded .panorama-viewport {
+  height: 520px;
+}
+
+.placeholder-card {
+  min-height: 220px;
+  grid-column: span 4;
+  display: grid;
+  align-content: space-between;
+  padding: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.92), rgba(245, 237, 227, 0.72)),
+    radial-gradient(circle at top right, rgba(126, 157, 179, 0.22), transparent 34%);
+}
+
+.placeholder-card h3 {
+  font-size: 1.6rem;
+  line-height: 1.08;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .scenic-card,
+  .placeholder-card {
+    grid-column: span 6;
+  }
+
+  .section-heading,
+  .viewer-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1220px);
+    margin: 10px auto 28px;
+  }
+
+  .hero,
+  .featured-card,
+  .placeholder-card {
+    padding: 18px;
+  }
+
+  .panorama-frame {
+    padding: 10px;
+  }
+
+  .panorama-viewport {
+    height: 280px;
+  }
+
+  .featured-card.expanded .panorama-viewport {
+    height: 440px;
+  }
+
+  .scenic-card.expanded .panorama-viewport {
+    height: 400px;
+  }
+
+  .scenic-card,
+  .placeholder-card {
+    grid-column: 1 / -1;
+    min-height: 180px;
+  }
+
+  .viewer-controls {
+    flex-wrap: wrap;
+  }
+
+  .viewer-overlay {
+    right: 10px;
+    bottom: 10px;
+    max-width: 78%;
+  }
+}
