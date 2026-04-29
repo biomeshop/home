@@ -151,26 +151,15 @@ body {
   overflow: hidden;
   border-radius: 22px;
   background: #0a0815;
-}
-
-.gallery-panorama-preview,
-.gallery-panorama-host,
-#gallery-panorama-modal-host,
-#gallery-panorama-modal-host .psv-container {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
 }
 
 .gallery-panorama-preview {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  max-height: 320px;
+  min-height: 220px;
   object-fit: cover;
-}
-
-.gallery-panorama-host {
-  position: absolute;
-  inset: 0;
 }
 
 .gallery-panorama-expand {
@@ -357,6 +346,11 @@ body {
 
   .gallery-panorama {
     padding: 10px;
+  }
+
+  .gallery-panorama-preview {
+    max-height: 240px;
+    min-height: 180px;
   }
 
   .gallery-grid {

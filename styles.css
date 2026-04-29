@@ -265,14 +265,14 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:minmax(260px, 340px) minmax(0, 1fr); gap:24px; padding:24px; }
 .featured-card {
-  border-color: transparent;
+  border-color: rgba(255, 214, 102, 0.42);
   background:
-    linear-gradient(135deg, rgba(255, 225, 146, 0.08), rgba(17, 14, 33, 0.92) 28%, rgba(10, 8, 21, 0.96)),
-    radial-gradient(circle at top right, rgba(255, 214, 102, 0.16), transparent 34%);
+    linear-gradient(135deg, rgba(255, 225, 146, 0.12), rgba(17, 14, 33, 0.92) 28%, rgba(10, 8, 21, 0.96)),
+    radial-gradient(circle at top right, rgba(255, 214, 102, 0.2), transparent 34%);
   box-shadow:
       var(--shadow),
-      0 0 24px rgba(255, 214, 102, 0.12),
-      inset 0 0 0 1px rgba(255, 225, 146, 0.04);
+      0 0 30px rgba(255, 214, 102, 0.16),
+      inset 0 0 0 1px rgba(255, 225, 146, 0.08);
 }
 .scenic-card { grid-column: span 6; display:grid; gap:18px; padding:22px; }
 

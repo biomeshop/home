@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biome Image Gallery</title>
+  <title>Biome Details</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../gallery.css">
+  <link rel="stylesheet" href="../gallery.css">
 </head>
 <body>
   <div class="gallery-shell">
     <div class="gallery-status-line" id="gallery-status-line" aria-hidden="true"></div>
     <div class="gallery-topbar">
-      <a class="back-link" id="gallery-back-link" href="../../"><span class="back-arrow" aria-hidden="true">&larr;</span> Back to home</a>
+      <a class="back-link" id="gallery-back-link" href="../"><span class="back-arrow" aria-hidden="true">&larr;</span> Back to home</a>
     </div>
 
     <main class="gallery-panel">
-      <p class="gallery-kicker">Images and Panorama</p>
+      <p class="gallery-kicker">Biome Details</p>
       <h1 class="gallery-title" id="gallery-title"></h1>
       <div class="gallery-meta" id="gallery-meta"></div>
       <p class="gallery-price" id="gallery-price"></p>
@@ -33,9 +33,9 @@
   <div class="gallery-modal" id="gallery-modal" hidden>
     <div class="gallery-modal-backdrop" data-close-gallery></div>
     <div class="gallery-modal-dialog" role="dialog" aria-modal="true" aria-label="Biome image preview">
-      <button class="gallery-close" type="button" data-close-gallery aria-label="Close image preview">×</button>
-      <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-nav="prev" aria-label="Previous image">‹</button>
-      <button class="gallery-nav gallery-nav-next" type="button" data-gallery-nav="next" aria-label="Next image">›</button>
+      <button class="gallery-close" type="button" data-close-gallery aria-label="Close image preview">&times;</button>
+      <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-nav="prev" aria-label="Previous image">&lsaquo;</button>
+      <button class="gallery-nav gallery-nav-next" type="button" data-gallery-nav="next" aria-label="Next image">&rsaquo;</button>
       <div class="gallery-stage">
         <img id="gallery-modal-image" alt="">
       </div>
@@ -52,6 +52,6 @@
     </div>
   </div>
 
-  <script type="module" src="../../gallery.js"></script>
+  <script type="module" src="../gallery.js"></script>
 </body>
 </html>

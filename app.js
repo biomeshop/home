@@ -42,7 +42,7 @@ function getAssetPath(imageKey) {
 }
 
 function getGalleryPath(item) {
-  return `./${item.id}/images/`;
+  return `./images/?id=${item.id}`;
 }
 
 function hasInteractivePanorama(item) {
