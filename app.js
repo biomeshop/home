@@ -2,6 +2,8 @@ import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5
 import { biomeInfos, biomeTypeOptions } from './biomeinfos.js';
 
 const sharedPlaceholderKey = 'visual-soon.png';
+const HYDRATE_MARGIN = '420px 0px';
+const RETAIN_MARGIN = '1200px 0px';
 
 const inventoryState = {
   biome: 'all',
@@ -29,6 +31,11 @@ const modalCloseButtons = modal.querySelectorAll('[data-close-modal]');
 let modalViewer = null;
 let activeSourceViewer = null;
 let activeModalViewport = null;
+let hydrationObserver = null;
+let retentionObserver = null;
+let revealObserver = null;
+
+const viewerRegistry = new Map();
 
 function getAssetPath(imageKey) {
   return `./assets/${imageKey}`;
@@ -106,16 +113,29 @@ function renderInventoryControls() {
   renderFilterOptions(priceSelect, priceOptions, inventoryState.price);
 }
 
-function renderStaticVisual(item, extraClass = '') {
+function renderStaticVisual(item, extraClass = '', { eager = false } = {}) {
+  const loading = eager ? 'eager' : 'lazy';
+  const fetchpriority = eager ? 'high' : 'auto';
+
   return `
     <div class="inventory-visual-wrap ${extraClass}">
-      <img class="inventory-visual" src="${getAssetPath(item.imageKey)}" alt="${item.name} visual">
+      <img
+        class="inventory-visual"
+        src="${getAssetPath(item.imageKey)}"
+        alt="${item.name} visual"
+        loading="${loading}"
+        decoding="async"
+        fetchpriority="${fetchpriority}"
+      >
       <span class="inventory-visual-label">Visual soon</span>
     </div>
   `;
 }
 
-function renderPanoramaMarkup(item, viewportClass = '') {
+function renderPanoramaMarkup(item, viewportClass = '', { eagerPreview = false } = {}) {
+  const loading = eagerPreview ? 'eager' : 'lazy';
+  const fetchpriority = eagerPreview ? 'high' : 'auto';
+
   return `
     <div class="panorama-card">
       <div class="viewer-header">
@@ -138,6 +158,14 @@ function renderPanoramaMarkup(item, viewportClass = '') {
           data-cropped-x="${item.pano.croppedX}"
           data-cropped-y="${item.pano.croppedY}"
         >
+          <img
+            class="panorama-preview"
+            src="${getAssetPath(item.imageKey)}"
+            alt="${item.name} panorama preview"
+            loading="${loading}"
+            decoding="async"
+            fetchpriority="${fetchpriority}"
+          >
           <div class="psv-host" aria-hidden="true"></div>
           <div class="viewer-badge">360</div>
           <div class="viewer-overlay">
@@ -167,11 +195,11 @@ function renderFeaturedBiome() {
   const statusClass = getStatusClass(featuredItem.status);
   const cardClass = getCardClass(featuredItem.status);
   const visualMarkup = hasInteractivePanorama(featuredItem)
-    ? renderPanoramaMarkup(featuredItem)
-    : renderStaticVisual(featuredItem, 'featured-visual');
+    ? renderPanoramaMarkup(featuredItem, '', { eagerPreview: true })
+    : renderStaticVisual(featuredItem, 'featured-visual', { eager: true });
 
   featuredGrid.innerHTML = `
-    <article class="card featured-card ${hasInteractivePanorama(featuredItem) ? 'panorama-entry' : ''} ${cardClass}" data-biome-id="${featuredItem.id}">
+    <article class="card featured-card reveal-card ${hasInteractivePanorama(featuredItem) ? 'panorama-entry' : ''} ${cardClass}" data-biome-id="${featuredItem.id}">
       <div class="card-copy">
         <div class="card-copy-top">
           <p class="card-label">Featured biome</p>
@@ -207,7 +235,7 @@ function renderInventoryCards() {
       : renderStaticVisual(item);
 
     return `
-      <article class="card inventory-card ${hasInteractivePanorama(item) ? 'panorama-entry' : ''} ${cardClass}" data-biome-id="${item.id}">
+      <article class="card inventory-card reveal-card ${hasInteractivePanorama(item) ? 'panorama-entry' : ''} ${cardClass}" data-biome-id="${item.id}">
         ${visualMarkup}
         <div class="card-copy">
           <div class="card-copy-top">
@@ -250,7 +278,7 @@ function bindInventoryControls() {
     }
 
     renderInventoryCards();
-    initializeRenderedPanoramas();
+    connectCardObservers();
   });
 
   controls.addEventListener('click', (event) => {
@@ -265,7 +293,7 @@ function bindInventoryControls() {
       inventoryState.price = 'default';
       renderInventoryControls();
       renderInventoryCards();
-      initializeRenderedPanoramas();
+      connectCardObservers();
     }
   });
 }
@@ -298,7 +326,7 @@ function syncModalFromSource() {
   modalViewer.zoom(activeSourceViewer.getZoomLevel());
 }
 
-function openModal(viewer, viewport) {
+async function openModal(viewer, viewport) {
   activeSourceViewer = viewer;
   activeModalViewport = viewport;
   modal.hidden = false;
@@ -373,27 +401,87 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const viewerRegistry = new Map();
-
 function destroyViewerForViewport(viewport) {
-  const existingViewer = viewerRegistry.get(viewport);
-  if (existingViewer) {
-    existingViewer.destroy();
-    viewerRegistry.delete(viewport);
+  const existing = viewerRegistry.get(viewport);
+  if (!existing) {
+    return;
   }
+
+  if (activeModalViewport === viewport && !modal.hidden) {
+    return;
+  }
+
+  existing.viewer.destroy();
+  viewerRegistry.delete(viewport);
+
+  const entry = viewport.closest('.panorama-entry');
+  if (entry) {
+    entry.classList.remove('is-pano-ready', 'is-hydrated');
+  }
+}
+
+function cleanupDetachedViewers() {
+  viewerRegistry.forEach((_, viewport) => {
+    if (!document.body.contains(viewport)) {
+      destroyViewerForViewport(viewport);
+    }
+  });
+}
+
+function bindPanoramaControls(entry, viewport) {
+  if (entry.dataset.controlsBound === 'true') {
+    return;
+  }
+
+  const expandButton = entry.querySelector('.expand-button');
+  const controlButtons = entry.querySelectorAll('.viewer-controls-inside button');
+
+  if (expandButton) {
+    expandButton.addEventListener('click', async () => {
+      expandButton.setAttribute('aria-expanded', 'true');
+      const viewer = await ensurePanoramaViewer(entry, { force: true });
+      if (viewer) {
+        await openModal(viewer, viewport);
+      }
+    });
+  }
+
+  controlButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const viewer = await ensurePanoramaViewer(entry, { force: true });
+      if (!viewer) {
+        return;
+      }
+
+      const action = button.dataset.action;
+      if (action === 'zoom-in') {
+        viewer.zoom(Math.min(100, viewer.getZoomLevel() + 9));
+      }
+      if (action === 'zoom-out') {
+        viewer.zoom(Math.max(0, viewer.getZoomLevel() - 9));
+      }
+      if (action === 'reset') {
+        viewer.rotate({ yaw: 0, pitch: 0 });
+        viewer.zoom(32);
+      }
+    });
+  });
+
+  entry.dataset.controlsBound = 'true';
 }
 
 function createPanoramaViewer(entry) {
   const viewport = entry.querySelector('.panorama-viewport');
   const host = entry.querySelector('.psv-host');
-  const expandButton = entry.querySelector('.expand-button');
-  const controlButtons = entry.querySelectorAll('.viewer-controls-inside button');
 
-  if (!viewport || !host || !expandButton) {
-    return;
+  if (!viewport || !host) {
+    return null;
   }
 
-  destroyViewerForViewport(viewport);
+  const existing = viewerRegistry.get(viewport);
+  if (existing) {
+    return existing.ready;
+  }
 
   const viewer = new Viewer({
     container: host,
@@ -414,49 +502,105 @@ function createPanoramaViewer(entry) {
     sphereCorrection: { pan: '0deg', tilt: '0deg', roll: '0deg' },
   });
 
-  viewerRegistry.set(viewport, viewer);
-
-  viewer.addEventListener('ready', () => {
-    viewer.rotate({ yaw: 0, pitch: 0 });
-    resizeViewer(viewer, viewport);
-  }, { once: true });
-
-  controlButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const action = button.dataset.action;
-      if (action === 'zoom-in') {
-        viewer.zoom(Math.min(100, viewer.getZoomLevel() + 9));
-      }
-      if (action === 'zoom-out') {
-        viewer.zoom(Math.max(0, viewer.getZoomLevel() - 9));
-      }
-      if (action === 'reset') {
-        viewer.rotate({ yaw: 0, pitch: 0 });
-        viewer.zoom(32);
-      }
-    });
+  const ready = new Promise((resolve) => {
+    viewer.addEventListener('ready', () => {
+      viewer.rotate({ yaw: 0, pitch: 0 });
+      resizeViewer(viewer, viewport);
+      entry.classList.add('is-pano-ready', 'is-hydrated');
+      resolve(viewer);
+    }, { once: true });
   });
 
-  expandButton.addEventListener('click', () => {
-    expandButton.setAttribute('aria-expanded', 'true');
-    openModal(viewer, viewport);
-  });
+  viewerRegistry.set(viewport, { viewer, ready });
+  return ready;
 }
 
-function initializeRenderedPanoramas() {
-  viewerRegistry.forEach((_, viewport) => {
-    if (!document.body.contains(viewport)) {
-      destroyViewerForViewport(viewport);
-    }
+async function ensurePanoramaViewer(entry, { force = false } = {}) {
+  const viewport = entry.querySelector('.panorama-viewport');
+  if (!viewport) {
+    return null;
+  }
+
+  const existing = viewerRegistry.get(viewport);
+  if (existing) {
+    return existing.ready;
+  }
+
+  if (!force && !entry.classList.contains('panorama-entry')) {
+    return null;
+  }
+
+  return createPanoramaViewer(entry);
+}
+
+function disconnectObservers() {
+  hydrationObserver?.disconnect();
+  retentionObserver?.disconnect();
+  revealObserver?.disconnect();
+}
+
+function connectCardObservers() {
+  cleanupDetachedViewers();
+  disconnectObservers();
+
+  hydrationObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      const card = entry.target;
+      void ensurePanoramaViewer(card);
+    });
+  }, {
+    rootMargin: HYDRATE_MARGIN,
+    threshold: 0.01,
+  });
+
+  retentionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        return;
+      }
+
+      const card = entry.target;
+      const viewport = card.querySelector('.panorama-viewport');
+      if (viewport) {
+        destroyViewerForViewport(viewport);
+      }
+    });
+  }, {
+    rootMargin: RETAIN_MARGIN,
+    threshold: 0,
+  });
+
+  revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.08,
   });
 
   document.querySelectorAll('.panorama-entry').forEach((entry) => {
-    createPanoramaViewer(entry);
+    bindPanoramaControls(entry, entry.querySelector('.panorama-viewport'));
+    hydrationObserver.observe(entry);
+    retentionObserver.observe(entry);
+  });
+
+  document.querySelectorAll('.reveal-card').forEach((entry) => {
+    revealObserver.observe(entry);
   });
 }
 
 window.addEventListener('resize', () => {
-  viewerRegistry.forEach((viewer, viewport) => {
+  viewerRegistry.forEach(({ viewer }, viewport) => {
     resizeViewer(viewer, viewport);
   });
 
@@ -472,4 +616,4 @@ renderFeaturedBiome();
 renderInventoryControls();
 renderInventoryCards();
 bindInventoryControls();
-initializeRenderedPanoramas();
+connectCardObservers();

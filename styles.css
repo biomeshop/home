@@ -253,6 +253,16 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   box-shadow: var(--shadow);
   transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
+.reveal-card {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: transform, opacity;
+}
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
 .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:minmax(260px, 340px) minmax(0, 1fr); gap:24px; padding:24px; }
 .scenic-card { grid-column: span 6; display:grid; gap:18px; padding:22px; }
 
@@ -365,6 +375,34 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   height: 220px;
 }
 
+.panorama-preview,
+.psv-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.panorama-preview {
+  display: block;
+  object-fit: cover;
+}
+
+.psv-host {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.panorama-entry.is-pano-ready .psv-host {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panorama-entry.is-pano-ready .panorama-preview {
+  opacity: 0;
+}
+
 .psv-host, .psv-container, .psv-modal-host { width:100%; height:100%; }
 .psv-container { border-radius:20px; overflow:hidden; background: linear-gradient(180deg, #120f24 0%, #090713 100%); }
 .psv-navbar { display:none; }
@@ -414,6 +452,8 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
     var(--shadow),
     inset 0 0 0 1px rgba(255,255,255,0.02),
     0 0 18px var(--card-white-glow);
+  content-visibility: auto;
+  contain-intrinsic-size: 410px;
 }
 
 .inventory-visual-wrap {
@@ -422,6 +462,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   border-radius: 20px;
   background: rgba(10, 8, 21, 0.72);
   min-height: 190px;
+  aspect-ratio: 16 / 10;
 }
 
 .inventory-visual {
