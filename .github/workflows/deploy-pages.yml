@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - codex/lag-pass-preview
   workflow_dispatch:
 
 permissions:
