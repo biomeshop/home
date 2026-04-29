@@ -16,7 +16,7 @@ export const biomeTypeOptions = [
 export const biomeInfos = [
   {
     id: '1',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Medium Mushroom Island',
     priceLabel: '$7m',
     priceValue: 7,
@@ -27,7 +27,7 @@ export const biomeInfos = [
   },
   {
     id: '2',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Medium Mushroom Island',
     priceLabel: '$8m',
     priceValue: 8,
@@ -38,7 +38,7 @@ export const biomeInfos = [
   },
   {
     id: '3',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Large Mushroom Island',
     priceLabel: '$19m',
     priceValue: 19,
@@ -49,7 +49,7 @@ export const biomeInfos = [
   },
   {
     id: '4',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Super Large Mushroom Island',
     priceLabel: '$23m',
     priceValue: 23,
@@ -60,7 +60,7 @@ export const biomeInfos = [
   },
   {
     id: '5',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Smallest Mushroom Island',
     priceLabel: '$12m',
     priceValue: 12,
@@ -71,7 +71,7 @@ export const biomeInfos = [
   },
   {
     id: '6',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Mushroom Behind Spawn',
     priceLabel: '$25m',
     priceValue: 25,
@@ -82,7 +82,7 @@ export const biomeInfos = [
   },
   {
     id: '7',
-    type: 'hybrid',
+    types: ['hybrid'],
     name: 'Biome Blend Isle',
     priceLabel: '$4m',
     priceValue: 4,
@@ -101,7 +101,7 @@ export const biomeInfos = [
   },
   {
     id: '8',
-    type: 'badlands',
+    types: ['badlands'],
     name: 'Crimson Heart Badlands',
     priceLabel: '$3m',
     priceValue: 3,
@@ -112,7 +112,7 @@ export const biomeInfos = [
   },
   {
     id: '9',
-    type: 'mountain',
+    types: ['mountain'],
     name: 'Icewraith Hollow',
     priceLabel: '$4m',
     priceValue: 4,
@@ -123,7 +123,7 @@ export const biomeInfos = [
   },
   {
     id: '10',
-    type: 'mountain',
+    types: ['mountain'],
     name: 'Frostbound Crown',
     priceLabel: '$4m',
     priceValue: 4,
@@ -134,7 +134,7 @@ export const biomeInfos = [
   },
   {
     id: '11',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Small Mushroom Island',
     priceLabel: '$2.5m',
     priceValue: 2.5,
@@ -145,7 +145,7 @@ export const biomeInfos = [
   },
   {
     id: '12',
-    type: 'mushroom',
+    types: ['mushroom'],
     name: 'Medium Mushroom Island',
     priceLabel: '$7.9m',
     priceValue: 7.9,
@@ -156,7 +156,7 @@ export const biomeInfos = [
   },
   {
     id: '13',
-    type: 'cherry',
+    types: ['cherry'],
     name: 'Large Natural Cherry Grove',
     priceLabel: '$9.5m',
     priceValue: 9.5,
@@ -167,7 +167,7 @@ export const biomeInfos = [
   },
   {
     id: '14',
-    type: 'plains',
+    types: ['plains'],
     name: 'Large Natural Mangrove Grove',
     priceLabel: '$3.4m',
     priceValue: 3.4,
@@ -178,7 +178,7 @@ export const biomeInfos = [
   },
   {
     id: '15',
-    type: 'pale',
+    types: ['pale'],
     name: 'Large Mother Pale Biome',
     priceLabel: '$4.8m',
     priceValue: 4.8,
@@ -189,7 +189,7 @@ export const biomeInfos = [
   },
   {
     id: '16',
-    type: 'pale',
+    types: ['pale'],
     name: 'Circular Hollow Pale Biome',
     priceLabel: '$8.6m',
     priceValue: 8.6,
@@ -200,7 +200,7 @@ export const biomeInfos = [
   },
   {
     id: '17',
-    type: 'plains',
+    types: ['plains'],
     name: 'Largest Mangrove Near Border',
     priceLabel: '$2m',
     priceValue: 2,
@@ -211,7 +211,7 @@ export const biomeInfos = [
   },
   {
     id: '18',
-    type: 'hybrid',
+    types: ['hybrid'],
     name: 'Cool Donut Island',
     priceLabel: '$4m',
     priceValue: 4,
@@ -222,7 +222,7 @@ export const biomeInfos = [
   },
   {
     id: '19',
-    type: 'jungle',
+    types: ['jungle'],
     name: 'Isolated Lonely Jungle',
     priceLabel: '$4m',
     priceValue: 4,
@@ -233,7 +233,7 @@ export const biomeInfos = [
   },
   {
     id: '20',
-    type: 'hybrid',
+    types: ['hybrid'],
     name: 'Mirror Mounds Islands',
     priceLabel: '$5m',
     priceValue: 5,
@@ -244,7 +244,7 @@ export const biomeInfos = [
   },
   {
     id: '21',
-    type: 'hybrid',
+    types: ['hybrid', 'desert'],
     name: 'Secluded Geode Desert',
     priceLabel: '$?m',
     priceValue: null,

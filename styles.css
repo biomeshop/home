@@ -271,6 +271,21 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .card-label-subtle {
   color: rgba(225, 201, 255, 0.72);
 }
+.card-type-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.card-type-chip {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(14, 11, 28, 0.64);
+  border: 1px solid rgba(203, 134, 255, 0.14);
+  color: #ecd8ff;
+}
+.card-type-list-featured .card-type-chip {
+  background: rgba(18, 14, 34, 0.72);
+}
 .card-copy h3 {
   font-family: "Poppins", "Segoe UI", sans-serif;
   font-size: clamp(2rem, 2.6vw, 2.8rem);
@@ -315,6 +330,16 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   background:rgba(255, 0, 0, 0.16);
   border:1px solid rgba(255, 0, 0, 0.62);
   box-shadow:0 0 32px rgba(255, 0, 0, 0.34), inset 0 0 14px rgba(255, 0, 0, 0.14);
+}
+.availability-live:hover,
+.availability-live:focus-visible {
+  box-shadow: 0 0 52px rgba(127, 255, 0, 0.56), inset 0 0 24px rgba(127, 255, 0, 0.22);
+  border-color: rgba(127, 255, 0, 0.9);
+}
+.availability-hold:hover,
+.availability-hold:focus-visible {
+  box-shadow: 0 0 44px rgba(255, 0, 0, 0.48), inset 0 0 20px rgba(255, 0, 0, 0.18);
+  border-color: rgba(255, 0, 0, 0.82);
 }
 
 .panorama-card { display:grid; gap:14px; }
@@ -569,6 +594,17 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .panorama-modal-stage {
   position: relative; height: min(76vh, 760px); border-radius: 22px; overflow: hidden;
   background: linear-gradient(180deg, #120f24 0%, #090713 100%);
+}
+.site-footer {
+  padding: 24px 0 8px;
+  text-align: center;
+}
+.site-footer p {
+  margin: 0;
+  color: rgba(225, 201, 255, 0.74);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
 }
 .modal-close {
   position: absolute; top: 20px; right: 20px; z-index: 3;

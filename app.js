@@ -45,6 +45,16 @@ function hasInteractivePanorama(item) {
   return Boolean(item.pano && item.imageKey && item.imageKey !== sharedPlaceholderKey);
 }
 
+function getBiomeTypes(item) {
+  if (Array.isArray(item.types) && item.types.length > 0) {
+    return item.types;
+  }
+  if (typeof item.type === 'string' && item.type.trim()) {
+    return [item.type.trim()];
+  }
+  return ['uncategorized'];
+}
+
 function getStatusClass(status) {
   return status === 'Available' ? 'availability-live' : 'availability-hold';
 }
@@ -74,7 +84,7 @@ function getVisibleInventory() {
   let visibleItems = [...biomeInfos];
 
   if (inventoryState.biome !== 'all') {
-    visibleItems = visibleItems.filter((item) => item.type === inventoryState.biome);
+    visibleItems = visibleItems.filter((item) => getBiomeTypes(item).includes(inventoryState.biome));
   }
 
   if (inventoryState.status !== 'all') {
@@ -111,6 +121,14 @@ function renderInventoryControls() {
   renderFilterOptions(biomeSelect, biomeTypeOptions, inventoryState.biome);
   renderFilterOptions(statusSelect, statusOptions, inventoryState.status);
   renderFilterOptions(priceSelect, priceOptions, inventoryState.price);
+}
+
+function renderTypeChips(item, extraClass = '') {
+  return `
+    <div class="card-type-list ${extraClass}">
+      ${getBiomeTypes(item).map((type) => `<span class="card-label card-type-chip">${type}</span>`).join('')}
+    </div>
+  `;
 }
 
 function renderStaticVisual(item, extraClass = '', { eager = false } = {}) {
@@ -204,7 +222,7 @@ function renderFeaturedBiome() {
         <div class="card-copy-top">
           <p class="card-label">Featured biome</p>
           <h3>${featuredItem.name}</h3>
-          <p class="card-label card-label-subtle">${featuredItem.type}</p>
+          ${renderTypeChips(featuredItem, 'card-type-list-featured')}
         </div>
         <p class="card-description">${featuredItem.description}</p>
         <div class="price-row">
@@ -239,7 +257,7 @@ function renderInventoryCards() {
         ${visualMarkup}
         <div class="card-copy">
           <div class="card-copy-top">
-            <p class="card-label">${item.type}</p>
+            ${renderTypeChips(item)}
             <h3>${item.name}</h3>
           </div>
           <p class="card-description">${item.description}</p>
