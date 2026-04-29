@@ -164,6 +164,83 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   display: flex; justify-content: space-between; align-items: end; gap: 20px; margin: 34px 0 18px;
 }
 
+.inventory-sort {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(203, 134, 255, 0.16);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(19, 16, 36, 0.9), rgba(10, 8, 21, 0.94)),
+    radial-gradient(circle at top right, rgba(154, 99, 255, 0.1), transparent 38%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 0 20px rgba(154, 99, 255, 0.08);
+}
+
+.sort-label,
+.sort-field-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: #e1c9ff;
+}
+
+.sort-label {
+  align-self: center;
+  margin-right: 2px;
+}
+
+.sort-field {
+  display: grid;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.sort-field select,
+.sort-reset {
+  appearance: none;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(203, 134, 255, 0.18);
+  background: rgba(12, 10, 25, 0.84);
+  color: var(--text);
+  font: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.sort-field select {
+  padding-right: 40px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.7) 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.7) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 3px),
+    calc(100% - 14px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.sort-reset {
+  cursor: pointer;
+  padding-inline: 18px;
+  color: #f8f4ff;
+  background: linear-gradient(135deg, rgba(113, 223, 255, 0.22), rgba(255, 109, 199, 0.16));
+}
+
+.sort-field select:hover,
+.sort-field select:focus-visible,
+.sort-reset:hover,
+.sort-reset:focus-visible {
+  border-color: rgba(203, 134, 255, 0.32);
+  box-shadow: 0 0 16px rgba(154, 99, 255, 0.12);
+  transform: translateY(-1px);
+  outline: none;
+}
+
 .card-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; }
 .inventory-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; margin-top: 18px; }
 .card {
@@ -181,6 +258,9 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 
 .card-copy { display:flex; flex-direction:column; gap:16px; padding:8px 4px 8px 2px; }
 .card-copy-top { display:grid; gap:8px; }
+.card-label-subtle {
+  color: rgba(225, 201, 255, 0.72);
+}
 .card-copy h3 {
   font-family: "Poppins", "Segoe UI", sans-serif;
   font-size: clamp(2rem, 2.6vw, 2.8rem);
@@ -281,6 +361,10 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   touch-action: pan-x pan-y;
 }
 
+.panorama-viewport-compact {
+  height: 220px;
+}
+
 .psv-host, .psv-container, .psv-modal-host { width:100%; height:100%; }
 .psv-container { border-radius:20px; overflow:hidden; background: linear-gradient(180deg, #120f24 0%, #090713 100%); }
 .psv-navbar { display:none; }
@@ -361,6 +445,15 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   backdrop-filter: blur(10px);
 }
 
+.featured-visual {
+  min-height: 100%;
+}
+
+.featured-visual .inventory-visual {
+  height: 100%;
+  min-height: var(--viewer-height);
+}
+
 .inventory-card.is-available {
   --status-glow-soft: var(--status-glow-available);
   --status-glow-strong: var(--status-glow-available-strong);
@@ -383,6 +476,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: calc(1.68em * 2);
 }
 
 .inventory-card .price-row {
@@ -450,6 +544,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   .hero, .featured-card { grid-template-columns: 1fr; }
   .hero { min-height: 640px; }
   .section-heading, .viewer-header { align-items:start; flex-direction:column; }
+  .inventory-sort { width: 100%; justify-content: flex-start; }
 }
 @media (max-width: 1200px) {
   .inventory-card { grid-column: span 6; }
@@ -463,10 +558,16 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   .inventory-card { grid-column: 1 / -1; padding: 18px; }
   .hero { min-height: 560px; }
   .hero-metrics { grid-template-columns: 1fr; }
+  .inventory-sort { padding: 14px; gap: 10px; }
+  .sort-label { width: 100%; }
+  .sort-field { min-width: 100%; }
+  .sort-reset { width: 100%; }
   .panorama-frame { padding: 10px; }
   .panorama-viewport { height: 280px; }
+  .panorama-viewport-compact { height: 190px; }
   .inventory-visual-wrap { min-height: 170px; }
   .inventory-visual { height: 170px; }
+  .featured-visual .inventory-visual { min-height: 280px; }
   .viewer-controls-inside { left: 14px; right: auto; bottom: 14px; flex-wrap: wrap; }
   .viewer-overlay { left: 14px; right: auto; bottom: 72px; max-width: 78%; }
   .panorama-modal { padding: 10px; }
