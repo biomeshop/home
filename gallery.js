@@ -1,0 +1,290 @@
+import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.1/+esm';
+import { biomeInfos } from './biomeinfos.js';
+
+const modal = document.getElementById('gallery-modal');
+const modalImage = document.getElementById('gallery-modal-image');
+const modalCloseButtons = document.querySelectorAll('[data-close-gallery]');
+const modalPrev = document.querySelector('[data-gallery-nav="prev"]');
+const modalNext = document.querySelector('[data-gallery-nav="next"]');
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryTitle = document.getElementById('gallery-title');
+const galleryPrice = document.getElementById('gallery-price');
+const galleryDescription = document.getElementById('gallery-description');
+const galleryMeta = document.getElementById('gallery-meta');
+const backLink = document.getElementById('gallery-back-link');
+const galleryShell = document.querySelector('.gallery-shell');
+const panoramaSection = document.getElementById('gallery-panorama');
+const panoramaModal = document.getElementById('gallery-panorama-modal');
+const panoramaModalHost = document.getElementById('gallery-panorama-modal-host');
+const panoramaCloseButtons = document.querySelectorAll('[data-close-panorama]');
+
+let activeImages = [];
+let activeIndex = 0;
+let pointerStartX = null;
+let inlineViewer = null;
+let panoramaModalViewer = null;
+let inlineViewport = null;
+
+function getBiomeTypes(item) {
+  if (Array.isArray(item.types) && item.types.length > 0) {
+    return item.types;
+  }
+  if (typeof item.type === 'string' && item.type.trim()) {
+    return [item.type.trim()];
+  }
+  return ['uncategorized'];
+}
+
+function resolveBiomeIdFromPath() {
+  const segments = window.location.pathname.split('/').filter(Boolean);
+  const imagesIndex = segments.lastIndexOf('images');
+  if (imagesIndex > 0) {
+    return segments[imagesIndex - 1];
+  }
+  return null;
+}
+
+function hasInteractivePanorama(item) {
+  return Boolean(item.pano && item.imageKey && item.imageKey !== 'visual-soon.png');
+}
+
+function getGalleryAssetPath(id, filename) {
+  return `../../assets/biomeimages/${id}/${filename}`;
+}
+
+function getPanoramaAssetPath(filename) {
+  return `../../assets/${filename}`;
+}
+
+function readPanoData(item) {
+  return {
+    fullWidth: Number(item.pano.fullWidth),
+    fullHeight: Number(item.pano.fullHeight),
+    croppedWidth: Number(item.pano.croppedWidth),
+    croppedHeight: Number(item.pano.croppedHeight),
+    croppedX: Number(item.pano.croppedX),
+    croppedY: Number(item.pano.croppedY),
+  };
+}
+
+function openModal(index) {
+  activeIndex = index;
+  modalImage.src = activeImages[activeIndex].src;
+  modalImage.alt = activeImages[activeIndex].alt;
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+function stepModal(direction) {
+  if (!activeImages.length) {
+    return;
+  }
+  activeIndex = (activeIndex + direction + activeImages.length) % activeImages.length;
+  modalImage.src = activeImages[activeIndex].src;
+  modalImage.alt = activeImages[activeIndex].alt;
+}
+
+async function openPanoramaModal() {
+  if (!inlineViewer || !inlineViewport) {
+    return;
+  }
+
+  panoramaModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  if (!panoramaModalViewer) {
+    panoramaModalViewer = new Viewer({
+      container: panoramaModalHost,
+      panorama: inlineViewport.dataset.panoramaSrc,
+      panoData: readPanoData(currentBiome),
+      defaultYaw: '0deg',
+      defaultPitch: '0deg',
+      defaultZoomLvl: 32,
+      mousemove: true,
+      mousewheel: true,
+      moveInertia: true,
+      moveSpeed: 0.55,
+      zoomSpeed: 0.5,
+      navbar: false,
+      touchmoveTwoFingers: false,
+      keyboard: false,
+      fisheye: false,
+      sphereCorrection: { pan: '0deg', tilt: '0deg', roll: '0deg' },
+    });
+  } else {
+    panoramaModalViewer.setPanorama(inlineViewport.dataset.panoramaSrc, {
+      panoData: readPanoData(currentBiome),
+      zoom: inlineViewer.getZoomLevel(),
+      position: inlineViewer.getPosition(),
+    });
+  }
+
+  const position = inlineViewer.getPosition();
+  panoramaModalViewer.rotate({ yaw: position.yaw, pitch: position.pitch });
+  panoramaModalViewer.zoom(inlineViewer.getZoomLevel());
+}
+
+function closePanoramaModal() {
+  panoramaModal.hidden = true;
+  if (modal.hidden) {
+    document.body.style.overflow = '';
+  }
+}
+
+function renderPanorama(biome) {
+  if (!hasInteractivePanorama(biome)) {
+    panoramaSection.hidden = true;
+    return;
+  }
+
+  panoramaSection.hidden = false;
+  panoramaSection.innerHTML = `
+    <div class="gallery-panorama-frame">
+      <div
+        class="gallery-panorama-viewport"
+        id="gallery-panorama-viewport"
+        data-panorama-src="${getPanoramaAssetPath(biome.imageKey)}"
+      >
+        <img
+          class="gallery-panorama-preview"
+          src="${getPanoramaAssetPath(biome.imageKey)}"
+          alt="${biome.name} panorama preview"
+          loading="eager"
+          decoding="async"
+        >
+        <button class="gallery-panorama-expand" type="button" id="gallery-panorama-expand">Expand</button>
+        <div class="gallery-panorama-host" id="gallery-panorama-host"></div>
+      </div>
+    </div>
+  `;
+
+  inlineViewport = document.getElementById('gallery-panorama-viewport');
+  const host = document.getElementById('gallery-panorama-host');
+  const expand = document.getElementById('gallery-panorama-expand');
+
+  inlineViewer?.destroy();
+  inlineViewer = new Viewer({
+    container: host,
+    panorama: getPanoramaAssetPath(biome.imageKey),
+    panoData: readPanoData(biome),
+    defaultYaw: '0deg',
+    defaultPitch: '0deg',
+    defaultZoomLvl: 32,
+    mousemove: true,
+    mousewheel: true,
+    moveInertia: true,
+    moveSpeed: 0.62,
+    zoomSpeed: 0.55,
+    navbar: false,
+    touchmoveTwoFingers: false,
+    keyboard: false,
+    fisheye: false,
+    sphereCorrection: { pan: '0deg', tilt: '0deg', roll: '0deg' },
+  });
+
+  expand?.addEventListener('click', openPanoramaModal);
+}
+
+function renderGallery(biome) {
+  galleryTitle.textContent = biome.name;
+  galleryPrice.textContent = biome.priceLabel;
+  galleryDescription.textContent = biome.description;
+  backLink.href = '../../';
+  galleryShell.classList.toggle('is-sold', biome.status === 'Sold');
+
+  galleryMeta.innerHTML = getBiomeTypes(biome)
+    .map((type) => `<span class="gallery-chip">${type}</span>`)
+    .join('');
+
+  activeImages = biome.galleryImages.map((filename, index) => ({
+    src: getGalleryAssetPath(biome.id, filename),
+    alt: `${biome.name} gallery image ${index + 1}`,
+  }));
+
+  galleryGrid.innerHTML = activeImages.map((image, index) => `
+    <article class="gallery-item">
+      <button type="button" data-image-index="${index}" aria-label="Open image ${index + 1} for ${biome.name}">
+        <img
+          class="gallery-thumb"
+          src="${image.src}"
+          alt="${image.alt}"
+          loading="lazy"
+          decoding="async"
+        >
+      </button>
+      <div class="gallery-caption">Preview ${index + 1}</div>
+    </article>
+  `).join('');
+
+  renderPanorama(biome);
+}
+
+galleryGrid.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-image-index]');
+  if (!(button instanceof HTMLElement)) {
+    return;
+  }
+
+  openModal(Number(button.dataset.imageIndex));
+});
+
+modalCloseButtons.forEach((button) => {
+  button.addEventListener('click', closeModal);
+});
+
+panoramaCloseButtons.forEach((button) => {
+  button.addEventListener('click', closePanoramaModal);
+});
+
+modalPrev?.addEventListener('click', () => stepModal(-1));
+modalNext?.addEventListener('click', () => stepModal(1));
+
+modal.addEventListener('pointerdown', (event) => {
+  pointerStartX = event.clientX;
+});
+
+modal.addEventListener('pointerup', (event) => {
+  if (pointerStartX == null) {
+    return;
+  }
+
+  const deltaX = event.clientX - pointerStartX;
+  if (Math.abs(deltaX) > 40) {
+    stepModal(deltaX < 0 ? 1 : -1);
+  }
+  pointerStartX = null;
+});
+
+document.addEventListener('keydown', (event) => {
+  if (!modal.hidden) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+    if (event.key === 'ArrowLeft') {
+      stepModal(-1);
+    }
+    if (event.key === 'ArrowRight') {
+      stepModal(1);
+    }
+  }
+
+  if (!panoramaModal.hidden && event.key === 'Escape') {
+    closePanoramaModal();
+  }
+});
+
+const biomeId = resolveBiomeIdFromPath();
+const currentBiome = biomeInfos.find((item) => item.id === biomeId);
+
+if (currentBiome) {
+  renderGallery(currentBiome);
+} else {
+  galleryTitle.textContent = 'Biome not found';
+  galleryDescription.textContent = 'This biome gallery does not exist yet.';
+  galleryPrice.textContent = '';
+}

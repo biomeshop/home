@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biome Image Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../gallery.css">
+</head>
+<body>
+  <div class="gallery-shell">
+    <div class="gallery-status-line" id="gallery-status-line" aria-hidden="true"></div>
+    <div class="gallery-topbar">
+      <a class="back-link" id="gallery-back-link" href="../../"><span class="back-arrow" aria-hidden="true">&larr;</span> Back to home</a>
+    </div>
+
+    <main class="gallery-panel">
+      <p class="gallery-kicker">Images and Panorama</p>
+      <h1 class="gallery-title" id="gallery-title"></h1>
+      <div class="gallery-meta" id="gallery-meta"></div>
+      <p class="gallery-price" id="gallery-price"></p>
+      <p class="gallery-description" id="gallery-description"></p>
+
+      <section class="gallery-panorama" id="gallery-panorama"></section>
+      <section class="gallery-grid" id="gallery-grid" aria-label="Biome images"></section>
+    </main>
+
+    <footer class="gallery-footer">All rights reserved 2026. orcMaster.</footer>
+  </div>
+
+  <div class="gallery-modal" id="gallery-modal" hidden>
+    <div class="gallery-modal-backdrop" data-close-gallery></div>
+    <div class="gallery-modal-dialog" role="dialog" aria-modal="true" aria-label="Biome image preview">
+      <button class="gallery-close" type="button" data-close-gallery aria-label="Close image preview">×</button>
+      <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-nav="prev" aria-label="Previous image">‹</button>
+      <button class="gallery-nav gallery-nav-next" type="button" data-gallery-nav="next" aria-label="Next image">›</button>
+      <div class="gallery-stage">
+        <img id="gallery-modal-image" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-modal gallery-panorama-modal" id="gallery-panorama-modal" hidden>
+    <div class="gallery-modal-backdrop" data-close-panorama></div>
+    <div class="gallery-modal-dialog" role="dialog" aria-modal="true" aria-label="Focused biome panorama">
+      <button class="gallery-close" type="button" data-close-panorama aria-label="Close panorama">&times;</button>
+      <div class="gallery-stage gallery-panorama-stage">
+        <div id="gallery-panorama-modal-host"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../../gallery.js"></script>
+</body>
+</html>

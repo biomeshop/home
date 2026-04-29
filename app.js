@@ -41,6 +41,10 @@ function getAssetPath(imageKey) {
   return `./assets/${imageKey}`;
 }
 
+function getGalleryPath(item) {
+  return `./${item.id}/images/`;
+}
+
 function hasInteractivePanorama(item) {
   return Boolean(item.pano && item.imageKey && item.imageKey !== sharedPlaceholderKey);
 }
@@ -131,6 +135,14 @@ function renderTypeChips(item, extraClass = '') {
   `;
 }
 
+function renderGalleryLink(item) {
+  return `
+    <a class="gallery-link" href="${getGalleryPath(item)}" aria-label="Open ${item.name} image gallery">
+      <span class="gallery-link-icon" aria-hidden="true"></span>
+    </a>
+  `;
+}
+
 function renderStaticVisual(item, extraClass = '', { eager = false } = {}) {
   const loading = eager ? 'eager' : 'lazy';
   const fetchpriority = eager ? 'high' : 'auto';
@@ -186,9 +198,7 @@ function renderPanoramaMarkup(item, viewportClass = '', { eagerPreview = false }
           >
           <div class="psv-host" aria-hidden="true"></div>
           <div class="viewer-badge">360</div>
-          <div class="viewer-overlay">
-            <span>${item.imageKey}</span>
-          </div>
+          <div class="viewer-overlay viewer-overlay-hidden" aria-hidden="true"></div>
           <button class="expand-button expand-button-inside" type="button" aria-expanded="false">
             Expand
           </button>
@@ -228,8 +238,9 @@ function renderFeaturedBiome() {
         <div class="price-row">
           <span class="price-pill">${featuredItem.priceLabel}</span>
         </div>
-        <div class="status-row">
+        <div class="card-actions-row">
           <span class="availability-pill ${statusClass}">${featuredItem.status}</span>
+          ${renderGalleryLink(featuredItem)}
         </div>
       </div>
       ${visualMarkup}
@@ -264,8 +275,9 @@ function renderInventoryCards() {
           <div class="price-row">
             <span class="price-pill">${item.priceLabel}</span>
           </div>
-          <div class="status-row">
+          <div class="card-actions-row">
             <span class="availability-pill ${statusClass}">${item.status}</span>
+            ${renderGalleryLink(item)}
           </div>
         </div>
       </article>

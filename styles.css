@@ -244,7 +244,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .card-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; }
 .inventory-grid { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:18px; margin-top: 18px; }
 .card {
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--radius-xl);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
@@ -264,6 +264,16 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   transition: opacity 320ms ease, transform 320ms ease;
 }
 .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:minmax(260px, 340px) minmax(0, 1fr); gap:24px; padding:24px; }
+.featured-card {
+  border-color: transparent;
+  background:
+    linear-gradient(135deg, rgba(255, 225, 146, 0.08), rgba(17, 14, 33, 0.92) 28%, rgba(10, 8, 21, 0.96)),
+    radial-gradient(circle at top right, rgba(255, 214, 102, 0.16), transparent 34%);
+  box-shadow:
+      var(--shadow),
+      0 0 24px rgba(255, 214, 102, 0.12),
+      inset 0 0 0 1px rgba(255, 225, 146, 0.04);
+}
 .scenic-card { grid-column: span 6; display:grid; gap:18px; padding:22px; }
 
 .card-copy { display:flex; flex-direction:column; gap:16px; padding:8px 4px 8px 2px; }
@@ -299,6 +309,14 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 }
 
 .status-row { display:grid; gap:8px; }
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
 .price-row { display:grid; gap:8px; }
 .price-pill {
   display: inline-flex;
@@ -445,6 +463,9 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   background:rgba(10,8,21,0.62); color:#fdfaff; font-size:0.85rem;
   border:1px solid rgba(203,134,255,0.12); box-shadow:0 0 20px rgba(255,214,102,0.08); backdrop-filter: blur(12px);
 }
+.viewer-overlay-hidden {
+  display: none;
+}
 
 .viewer-controls { display:flex; gap:10px; }
 .viewer-controls-inside {
@@ -553,6 +574,39 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   margin-top: auto;
   padding-top: 4px;
   align-self: start;
+}
+.inventory-card .card-actions-row .availability-pill,
+.featured-card .card-actions-row .availability-pill {
+  flex-shrink: 0;
+}
+
+.gallery-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 214, 102, 0.18);
+  background: linear-gradient(135deg, rgba(255, 214, 102, 0.12), rgba(255, 179, 71, 0.08));
+  box-shadow: 0 0 18px rgba(255, 214, 102, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.gallery-link:hover,
+.gallery-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(255, 214, 102, 0.34);
+  box-shadow: 0 0 24px rgba(255, 214, 102, 0.22);
+  outline: none;
+}
+
+.gallery-link-icon {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #ffe08a, #ffb347);
+  -webkit-mask: url("./assets/mountain-icon.svg") center/contain no-repeat;
+  mask: url("./assets/mountain-icon.svg") center/contain no-repeat;
 }
 
 .hero-panel:hover,
