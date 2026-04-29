@@ -78,15 +78,7 @@ export const biomeInfos = [
     status: 'Available',
     description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
     imageKey: 'panorama.jpg',
-    featured: true,
-    pano: {
-      fullWidth: 6985,
-      fullHeight: 3493,
-      croppedWidth: 6985,
-      croppedHeight: 2580,
-      croppedX: 0,
-      croppedY: 457,
-    },
+    featured: false,
   },
   {
     id: '7',
@@ -97,7 +89,15 @@ export const biomeInfos = [
     status: 'Available',
     description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
     imageKey: sharedPlaceholder,
-    featured: false,
+    featured: true,
+    pano: {
+      fullWidth: 6985,
+      fullHeight: 3493,
+      croppedWidth: 6985,
+      croppedHeight: 2580,
+      croppedX: 0,
+      croppedY: 457,
+    },
   },
   {
     id: '8',
