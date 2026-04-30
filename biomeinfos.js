@@ -25,6 +25,17 @@ export const biomeInfos = [
     imageKey: sharedPlaceholder,
     featured: false,
   },
+{
+    id: '22',
+    types: ['mushroom'],
+    name: 'jason island',
+    priceLabel: '$557m',
+    priceValue: 7,
+    status: 'Available',
+    description: 'A calm natural layout with strong build space and a clean approach line from every side.',
+    imageKey: sharedPlaceholder,
+    featured: false,
+  },
   {
     id: '2',
     types: ['mushroom'],
