@@ -1,6 +1,7 @@
 import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.1/+esm';
 import { biomeInfos } from './biomeinfos.js';
 
+const galleryManifestUrl = '../assets/biome-gallery-manifest.json';
 const modal = document.getElementById('gallery-modal');
 const modalImage = document.getElementById('gallery-modal-image');
 const modalCloseButtons = document.querySelectorAll('[data-close-gallery]');
@@ -22,6 +23,7 @@ let activeImages = [];
 let activeIndex = 0;
 let pointerStartX = null;
 let panoramaModalViewer = null;
+let galleryManifest = {};
 
 function getBiomeTypes(item) {
   if (Array.isArray(item.types) && item.types.length > 0) {
@@ -48,6 +50,21 @@ function getGalleryAssetPath(id, filename) {
 
 function getPanoramaAssetPath(filename) {
   return `../assets/${filename}`;
+}
+
+async function loadGalleryManifest() {
+  const response = await fetch(galleryManifestUrl, { cache: 'no-store' });
+  if (!response.ok) {
+    throw new Error(`Unable to load gallery manifest: ${response.status}`);
+  }
+
+  const manifest = await response.json();
+  return typeof manifest === 'object' && manifest ? manifest : {};
+}
+
+function getGalleryFilenames(biome) {
+  const images = galleryManifest[biome.id];
+  return Array.isArray(images) ? images : [];
 }
 
 function readPanoData(item) {
@@ -169,25 +186,35 @@ function renderGallery(biome) {
     .map((type) => `<span class="gallery-chip">${type}</span>`)
     .join('');
 
-  activeImages = biome.galleryImages.map((filename, index) => ({
+  const galleryFilenames = getGalleryFilenames(biome);
+
+  activeImages = galleryFilenames.map((filename, index) => ({
     src: getGalleryAssetPath(biome.id, filename),
     alt: `${biome.name} gallery image ${index + 1}`,
   }));
 
-  galleryGrid.innerHTML = activeImages.map((image, index) => `
-    <article class="gallery-item">
-      <button type="button" data-image-index="${index}" aria-label="Open image ${index + 1} for ${biome.name}">
-        <img
-          class="gallery-thumb"
-          src="${image.src}"
-          alt="${image.alt}"
-          loading="lazy"
-          decoding="async"
-        >
-      </button>
-      <div class="gallery-caption">Preview ${index + 1}</div>
-    </article>
-  `).join('');
+  if (activeImages.length === 0) {
+    galleryGrid.innerHTML = `
+      <article class="gallery-item">
+        <div class="gallery-caption">No gallery images yet for this biome.</div>
+      </article>
+    `;
+  } else {
+    galleryGrid.innerHTML = activeImages.map((image, index) => `
+      <article class="gallery-item">
+        <button type="button" data-image-index="${index}" aria-label="Open image ${index + 1} for ${biome.name}">
+          <img
+            class="gallery-thumb"
+            src="${image.src}"
+            alt="${image.alt}"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+        <div class="gallery-caption">Preview ${index + 1}</div>
+      </article>
+    `).join('');
+  }
 
   renderPanoramaPreview(biome);
 }
@@ -249,11 +276,23 @@ document.addEventListener('keydown', (event) => {
 const biomeId = resolveBiomeId();
 const currentBiome = biomeInfos.find((item) => item.id === biomeId);
 
-if (currentBiome) {
+async function initializeGalleryPage() {
+  if (!currentBiome) {
+    galleryTitle.textContent = 'Biome not found';
+    galleryDescription.textContent = 'This biome gallery does not exist yet.';
+    galleryPrice.textContent = '';
+    panoramaSection.hidden = true;
+    return;
+  }
+
+  try {
+    galleryManifest = await loadGalleryManifest();
+  } catch (error) {
+    console.error(error);
+    galleryManifest = {};
+  }
+
   renderGallery(currentBiome);
-} else {
-  galleryTitle.textContent = 'Biome not found';
-  galleryDescription.textContent = 'This biome gallery does not exist yet.';
-  galleryPrice.textContent = '';
-  panoramaSection.hidden = true;
 }
+
+void initializeGalleryPage();

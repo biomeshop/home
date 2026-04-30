@@ -1,5 +1,4 @@
 const sharedPlaceholder = 'visual-soon.png';
-const defaultGalleryImages = ['coming-soon-1.png', 'coming-soon-2.png', 'coming-soon-3.png'];
 
 export const biomeTypeOptions = [
   ['all', 'All biomes'],
@@ -24,7 +23,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'A calm natural layout with strong build space and a clean approach line from every side.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -36,7 +34,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -48,7 +45,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -60,7 +56,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -72,7 +67,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -84,7 +78,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
     imageKey: 'panorama.jpg',
-    galleryImages: defaultGalleryImages,
     featured: true,
     pano: {
       fullWidth: 6985,
@@ -104,7 +97,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -116,7 +108,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'A calm natural layout with strong build space and a clean approach line from every side.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -128,7 +119,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -140,7 +130,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -152,7 +141,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -164,7 +152,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -176,7 +163,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -188,7 +174,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -200,7 +185,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'A calm natural layout with strong build space and a clean approach line from every side.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -212,7 +196,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -224,7 +207,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -236,7 +218,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -248,7 +229,6 @@ export const biomeInfos = [
     status: 'Sold',
     description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -260,7 +240,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
   {
@@ -272,7 +251,6 @@ export const biomeInfos = [
     status: 'Available',
     description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
     imageKey: sharedPlaceholder,
-    galleryImages: defaultGalleryImages,
     featured: false,
   },
 ];
