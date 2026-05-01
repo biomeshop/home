@@ -34,7 +34,7 @@ export const biomeInfos = [
     priceLabel: '$7m',
     priceValue: 7,
     status: 'Sold',
-    description: 'A calm natural layout with strong build space and a clean approach line from every side.',
+    description: 'A well-sized island, perfect for starting your base.',
     imageKey: 'panorama_1.png',
     featured: false,
      pano: {
@@ -53,7 +53,7 @@ export const biomeInfos = [
     priceLabel: '$8m',
     priceValue: 8,
     status: 'Available',
-    description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
+    description: 'A mushroom shaped like a coiled serpent, waiting for you.',
     imageKey: 'panorama_2.png',
     featured: false,
     pano: {
@@ -72,7 +72,7 @@ export const biomeInfos = [
     priceLabel: '$19m',
     priceValue: 19,
     status: 'Available',
-    description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
+    description: 'Do not underestimate its massive scale.',
     imageKey: 'panorama_3.png',
     featured: false,
     pano: {
@@ -91,7 +91,7 @@ export const biomeInfos = [
     priceLabel: '$23m',
     priceValue: 23,
     status: 'Available',
-    description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
+    description: 'Oh godfather, what a size-could this be the largest?',
     imageKey: 'panorama_4.png',
     featured: false,
     pano: {
@@ -110,7 +110,7 @@ export const biomeInfos = [
     priceLabel: '$12m',
     priceValue: 12,
     status: 'Available',
-    description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
+    description: 'A rare natural generation, seen only once in a lifetime.',
     imageKey: 'panorama_5.png',
     featured: false,
     pano: {
@@ -129,7 +129,7 @@ export const biomeInfos = [
     priceLabel: '$25m',
     priceValue: 25,
     status: 'Available',
-    description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
+    description: 'The Mother of All Mushrooms rises before you.',
     imageKey: 'panorama_6.png',
     featured: true,
     pano: {
@@ -148,7 +148,7 @@ export const biomeInfos = [
     priceLabel: '$4m',
     priceValue: 4,
     status: 'Available',
-    description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
+    description: 'Born in a sacred and unusual way-claim me.',
     imageKey: 'panorama_7.png',
     featured: false,
     pano: {
@@ -167,7 +167,7 @@ export const biomeInfos = [
     priceLabel: '$3m',
     priceValue: 3,
     status: 'Sold',
-    description: 'A calm natural layout with strong build space and a clean approach line from every side.',
+    description: 'I stand at the center of temptation itself.',
     imageKey: 'panorama_8.png',
     featured: false,
     pano: {
@@ -186,7 +186,7 @@ export const biomeInfos = [
     priceLabel: '$4m',
     priceValue: 4,
     status: 'Available',
-    description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
+    description: 'The peak of defense-build your fortress upon me.',
     imageKey: 'panorama_9.png',
     featured: false,
     pano: {
@@ -205,7 +205,7 @@ export const biomeInfos = [
     priceLabel: '$4m',
     priceValue: 4,
     status: 'Sold',
-    description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
+    description: 'Once a king, now a cursed crown-shaped mountain.',
     imageKey: 'panorama_10.png',
     featured: false,
     pano: {
@@ -224,7 +224,7 @@ export const biomeInfos = [
     priceLabel: '$2.5m',
     priceValue: 2.5,
     status: 'Sold',
-    description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
+    description: 'Small, adorable, and waiting to be claimed by one.',
     imageKey: sharedPlaceholder,
     featured: false,
   },
@@ -235,7 +235,7 @@ export const biomeInfos = [
     priceLabel: '$9.5m',
     priceValue: 9.5,
     status: 'Sold',
-    description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
+    description: 'Hmmmmmmmmmmmmmmmmmm…',
     imageKey: 'panorama_12.png',
     featured: false,
      pano: {
@@ -254,7 +254,7 @@ export const biomeInfos = [
     priceLabel: '$7.9m',
     priceValue: 7.9,
     status: 'Sold',
-    description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
+    description: 'I was the greatest of them all - 伝説級の存在.',
     imageKey: 'panorama_13.png',
     featured: false,
     pano: {
@@ -273,7 +273,7 @@ export const biomeInfos = [
     priceLabel: '$9.5m',
     priceValue: 9.5,
     status: 'Available',
-    description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
+    description: 'The witches’ bane-forge your cavern within me.',
     imageKey: 'panorama_14.png',
     featured: false,
     pano: {
@@ -292,7 +292,7 @@ export const biomeInfos = [
     priceLabel: '$3.4m',
     priceValue: 3.4,
     status: 'Sold',
-    description: 'A calm natural layout with strong build space and a clean approach line from every side.',
+    description: 'The holy land of death, only the worthy may claim me.',
     imageKey: 'panorama_15.png',
     featured: false,
     pano: {
@@ -311,7 +311,7 @@ export const biomeInfos = [
     priceLabel: '$4.8m',
     priceValue: 4.8,
     status: 'Sold',
-    description: 'This biome opens with balanced terrain that feels rare, usable, and visually satisfying in one glance.',
+    description: 'I am the child of death itself.',
     imageKey: 'panorama_16.png',
     featured: false,
     pano: {
@@ -330,7 +330,7 @@ export const biomeInfos = [
     priceLabel: '$8.6m',
     priceValue: 8.6,
     status: 'Available',
-    description: 'A strong choice for players who want natural structure, clean borders, and room for ambitious projects.',
+    description: 'Come to the far west, my child.',
     imageKey: 'panorama_17.png',
     featured: false,
     pano: {
@@ -349,7 +349,7 @@ export const biomeInfos = [
     priceLabel: '$2m',
     priceValue: 2,
     status: 'Sold',
-    description: 'Its terrain shape feels premium from the first flyover, with a layout that supports both beauty and scale.',
+    description: 'I was once a donut in a past life.',
     imageKey: 'panorama_18.png',
     featured: false,
      pano: {
@@ -368,7 +368,7 @@ export const biomeInfos = [
     priceLabel: '$4m',
     priceValue: 4,
     status: 'Sold',
-    description: 'This listing offers a naturally impressive footprint suited for both showcase builds and long-term claims.',
+    description: 'I am alone… I need friends… *sniff*.',
     imageKey: 'panorama_19.png',
     featured: false,
      pano: {
@@ -387,7 +387,7 @@ export const biomeInfos = [
     priceLabel: '$4m',
     priceValue: 4,
     status: 'Available',
-    description: 'A rare generation pattern gives this biome a polished look without needing heavy terraforming first.',
+    description: 'Do I look like something beyond legend?',
     imageKey: 'panorama_20.png',
     featured: false,
     pano: {
@@ -406,7 +406,7 @@ export const biomeInfos = [
     priceLabel: '$5m',
     priceValue: 5,
     status: 'Available',
-    description: 'Its natural placement makes it ideal for players who want something memorable without forced decoration.',
+    description: 'Only the one who conquered the sun may claim me.',
     imageKey: 'panorama_21.png',
     featured: false,
     pano: {
