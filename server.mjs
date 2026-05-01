@@ -1,6 +1,7 @@
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
 import { createServer } from "node:http";
+import { writeGalleryManifest } from "./scripts/gallery-manifest.mjs";
 
 const HOST = "127.0.0.1";
 const PORT = 4173;
@@ -45,6 +46,19 @@ const server = createServer((request, response) => {
   createReadStream(filePath).pipe(response);
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`The Greats of the World is running at http://${HOST}:${PORT}`);
-});
+function startServer() {
+  try {
+    const { outputPath } = writeGalleryManifest(ROOT);
+    console.log(`Gallery manifest refreshed at ${outputPath}`);
+  } catch (error) {
+    console.error("Failed to generate gallery manifest before startup.");
+    console.error(error);
+    process.exit(1);
+  }
+
+  server.listen(PORT, HOST, () => {
+    console.log(`The Greats of the World is running at http://${HOST}:${PORT}`);
+  });
+}
+
+startServer();
