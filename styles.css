@@ -98,6 +98,27 @@ h1, h2, h3 {
 h1 { font-size: clamp(3.6rem, 8vw, 7rem); text-shadow: 0 0 34px rgba(154, 99, 255, 0.34); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 
+.hero-title {
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+  transition: transform 180ms ease, text-shadow 180ms ease, filter 180ms ease;
+}
+
+.hero-title:hover,
+.hero-title:focus-visible {
+  background: linear-gradient(120deg, #ff9cbf, #ff7aa5 35%, #ff8f8f 68%, #ffc2d4 100%);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 122, 165, 0.24), 0 0 34px rgba(255, 143, 143, 0.16);
+  filter: saturate(1.05);
+  transform: translateY(-1px);
+  animation: heroTitleShift 2.8s linear infinite;
+  outline: none;
+}
+
 .hero-text, .section-note, .card-description, .viewer-help, .placeholder-card p, .stat-note {
   color: var(--muted);
   line-height: 1.68;
@@ -132,11 +153,13 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   display: block;
   font-family: "Baskerville Old Face", "Book Antiqua", Georgia, serif;
   font-weight: 700;
-  font-size: clamp(3.6rem, 7vw, 5rem) !important;
+  font-size: clamp(3rem, 5.8vw, 4.35rem) !important;
   line-height: 0.88;
   letter-spacing: -0.03em;
   margin-top: 4px;
   margin-bottom: 6px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   background: linear-gradient(120deg, #ffd666, #ffb347 30%, #fff1a8 55%, #ffcc66 78%, #ffd666 100%);
   background-size: 220% 220%;
   -webkit-background-clip: text;
@@ -700,6 +723,11 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   100% { background-position: 200% 50%; }
 }
 
+@keyframes heroTitleShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
 @media (max-width: 1080px) {
   .hero, .featured-card { grid-template-columns: 1fr; }
   .hero { min-height: 640px; }
@@ -717,6 +745,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
   .hero, .featured-card, .scenic-card, .placeholder-card { padding: 18px; }
   .inventory-card { grid-column: 1 / -1; padding: 18px; }
   .hero { min-height: 560px; }
+  .hero-title { max-width: 100%; }
   .hero-metrics { grid-template-columns: 1fr; }
   .inventory-sort { padding: 14px; gap: 10px; }
   .sort-label { width: 100%; }

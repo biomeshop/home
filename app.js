@@ -1,5 +1,5 @@
 import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.1/+esm';
-import { biomeInfos, biomeTypeOptions } from './biomeinfos.js';
+import { biomeInfos, biomeTypeOptions, mainBiomeShopPanorama } from './biomeinfos.js';
 
 const sharedPlaceholderKey = 'visual-soon.png';
 const HYDRATE_MARGIN = '420px 0px';
@@ -27,6 +27,7 @@ const modal = document.getElementById('panorama-modal');
 const modalHost = document.getElementById('psv-modal-host');
 const modalButtons = modal.querySelectorAll('[data-modal-action]');
 const modalCloseButtons = modal.querySelectorAll('[data-close-modal]');
+const heroTitle = document.getElementById('hero-title');
 
 let modalViewer = null;
 let activeSourceViewer = null;
@@ -329,6 +330,17 @@ function bindInventoryControls() {
 }
 
 function readPanoData(viewport) {
+  if (!viewport.dataset) {
+    return {
+      fullWidth: Number(viewport.pano.fullWidth),
+      fullHeight: Number(viewport.pano.fullHeight),
+      croppedWidth: Number(viewport.pano.croppedWidth),
+      croppedHeight: Number(viewport.pano.croppedHeight),
+      croppedX: Number(viewport.pano.croppedX),
+      croppedY: Number(viewport.pano.croppedY),
+    };
+  }
+
   return {
     fullWidth: Number(viewport.dataset.fullWidth),
     fullHeight: Number(viewport.dataset.fullHeight),
@@ -414,6 +426,68 @@ async function openModal(viewer, viewport) {
   });
 }
 
+async function openStandaloneModal({ imageKey, pano }) {
+  if (!imageKey || !pano) {
+    return;
+  }
+
+  activeSourceViewer = null;
+  activeModalViewport = null;
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  const panoramaSrc = getAssetPath(imageKey);
+  const panoData = readPanoData({ pano });
+
+  if (!modalViewer) {
+    modalViewer = new Viewer({
+      container: modalHost,
+      panorama: panoramaSrc,
+      panoData,
+      defaultYaw: '0deg',
+      defaultPitch: '0deg',
+      defaultZoomLvl: 32,
+      mousemove: true,
+      mousewheel: true,
+      moveInertia: true,
+      moveSpeed: 0.55,
+      zoomSpeed: 0.5,
+      navbar: false,
+      touchmoveTwoFingers: false,
+      keyboard: false,
+      fisheye: false,
+      sphereCorrection: { pan: '0deg', tilt: '0deg', roll: '0deg' },
+    });
+
+    modalButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.modalAction;
+        if (action === 'zoom-in') {
+          modalViewer.zoom(Math.min(100, modalViewer.getZoomLevel() + 9));
+        }
+        if (action === 'zoom-out') {
+          modalViewer.zoom(Math.max(0, modalViewer.getZoomLevel() - 9));
+        }
+        if (action === 'reset') {
+          modalViewer.rotate({ yaw: 0, pitch: 0 });
+          modalViewer.zoom(32);
+        }
+      });
+    });
+  } else {
+    modalViewer.setPanorama(panoramaSrc, { panoData });
+  }
+
+  requestAnimationFrame(() => {
+    modalViewer.resize({
+      width: `${modalHost.clientWidth}px`,
+      height: `${modalHost.clientHeight}px`,
+    });
+    modalViewer.rotate({ yaw: 0, pitch: 0 });
+    modalViewer.zoom(32);
+  });
+}
+
 function closeModal() {
   modal.hidden = true;
   document.body.style.overflow = '';
@@ -423,6 +497,19 @@ function closeModal() {
 
 modalCloseButtons.forEach((button) => {
   button.addEventListener('click', closeModal);
+});
+
+heroTitle?.addEventListener('click', async () => {
+  await openStandaloneModal(mainBiomeShopPanorama);
+});
+
+heroTitle?.addEventListener('keydown', async (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') {
+    return;
+  }
+
+  event.preventDefault();
+  await openStandaloneModal(mainBiomeShopPanorama);
 });
 
 document.addEventListener('keydown', (event) => {

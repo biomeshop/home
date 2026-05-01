@@ -1,5 +1,17 @@
 const sharedPlaceholder = 'visual-soon.png';
 
+export const mainBiomeShopPanorama = {
+  imageKey: 'panorama_0.png',
+  pano: {
+    fullWidth: 6985,
+    fullHeight: 3493,
+    croppedWidth: 6985,
+    croppedHeight: 2580,
+    croppedX: 0,
+    croppedY: 457,
+  },
+};
+
 export const biomeTypeOptions = [
   ['all', 'All biomes'],
   ['hybrid', 'Hybrid'],
