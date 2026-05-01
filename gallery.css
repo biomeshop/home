@@ -247,30 +247,12 @@ body {
   display: none;
 }
 
-.expand-button,
 .viewer-controls button {
   appearance: none;
   border: 0;
   cursor: pointer;
   font: inherit;
   transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
-}
-
-.expand-button {
-  min-width: 108px;
-  padding: 11px 14px;
-  border-radius: 999px;
-  color: #fdfaff;
-  background: linear-gradient(135deg, rgba(113, 223, 255, 0.72), rgba(104, 180, 255, 0.58));
-  box-shadow: 0 12px 24px rgba(104, 180, 255, 0.16);
-  backdrop-filter: blur(10px);
-}
-
-.expand-button-inside {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 2;
 }
 
 .viewer-controls {
@@ -299,14 +281,11 @@ body {
   padding-inline: 18px;
 }
 
-.expand-button:hover,
-.expand-button:focus-visible,
 .viewer-controls button:hover,
 .viewer-controls button:focus-visible {
   transform: translateY(-1px);
 }
 
-.expand-button:focus-visible,
 .viewer-controls button:focus-visible,
 .panorama-viewport:focus-visible {
   outline: 3px solid rgba(113, 223, 255, 0.4);
@@ -394,10 +373,6 @@ body {
   background: #0a0815;
 }
 
-.gallery-panorama-stage {
-  min-height: min(78vh, 760px);
-}
-
 .gallery-stage img {
   display: block;
   width: 100%;
@@ -446,11 +421,6 @@ body {
 .gallery-nav:focus-visible {
   box-shadow: 0 0 18px rgba(255, 214, 102, 0.16);
   outline: none;
-}
-
-.viewer-controls-modal {
-  right: 18px;
-  bottom: 18px;
 }
 
 .gallery-footer {

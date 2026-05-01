@@ -16,17 +16,12 @@ const galleryMeta = document.getElementById('gallery-meta');
 const backLink = document.getElementById('gallery-back-link');
 const galleryShell = document.querySelector('.gallery-shell');
 const panoramaSection = document.getElementById('gallery-panorama');
-const panoramaModal = document.getElementById('gallery-panorama-modal');
-const panoramaModalHost = document.getElementById('gallery-panorama-modal-host');
-const panoramaModalButtons = panoramaModal.querySelectorAll('[data-modal-action]');
-const panoramaCloseButtons = document.querySelectorAll('[data-close-panorama]');
 
 let activeImages = [];
 let activeIndex = 0;
 let pointerStartX = null;
 let galleryManifest = {};
 let inlinePanoramaViewer = null;
-let panoramaModalViewer = null;
 let inlinePanoramaViewport = null;
 
 function getBiomeTypes(item) {
@@ -94,7 +89,7 @@ function readPanoData(source) {
 }
 
 function syncBodyScrollLock() {
-  document.body.style.overflow = (!modal.hidden || !panoramaModal.hidden) ? 'hidden' : '';
+  document.body.style.overflow = !modal.hidden ? 'hidden' : '';
 }
 
 function resizeViewer(viewer, viewport) {
@@ -171,55 +166,6 @@ async function ensureInlinePanoramaViewer() {
   return inlinePanoramaViewer;
 }
 
-async function openPanoramaModal() {
-  const viewer = await ensureInlinePanoramaViewer();
-  if (!viewer || !inlinePanoramaViewport) {
-    return;
-  }
-
-  panoramaModal.hidden = false;
-  syncBodyScrollLock();
-
-  if (!panoramaModalViewer) {
-    panoramaModalViewer = new Viewer({
-      container: panoramaModalHost,
-      panorama: inlinePanoramaViewport.dataset.panoramaSrc,
-      panoData: readPanoData(inlinePanoramaViewport),
-      defaultYaw: '0deg',
-      defaultPitch: '0deg',
-      defaultZoomLvl: 32,
-      mousemove: true,
-      mousewheel: true,
-      moveInertia: true,
-      moveSpeed: 0.55,
-      zoomSpeed: 0.5,
-      navbar: false,
-      touchmoveTwoFingers: false,
-      keyboard: false,
-      fisheye: false,
-      sphereCorrection: { pan: '0deg', tilt: '0deg', roll: '0deg' },
-    });
-  } else {
-    panoramaModalViewer.setPanorama(inlinePanoramaViewport.dataset.panoramaSrc, {
-      panoData: readPanoData(inlinePanoramaViewport),
-    });
-  }
-
-  requestAnimationFrame(() => {
-    panoramaModalViewer.resize({
-      width: `${panoramaModalHost.clientWidth}px`,
-      height: `${panoramaModalHost.clientHeight}px`,
-    });
-    panoramaModalViewer.rotate({ yaw: 0, pitch: 0 });
-    panoramaModalViewer.zoom(32);
-  });
-}
-
-function closePanoramaModal() {
-  panoramaModal.hidden = true;
-  syncBodyScrollLock();
-}
-
 function renderPanoramaMarkup(biome) {
   return `
     <div class="gallery-panorama-card">
@@ -254,9 +200,6 @@ function renderPanoramaMarkup(biome) {
           <div class="psv-host" aria-hidden="true"></div>
           <div class="viewer-badge">360</div>
           <div class="viewer-overlay viewer-overlay-hidden" aria-hidden="true"></div>
-          <button class="expand-button expand-button-inside" type="button" id="gallery-panorama-expand" aria-expanded="false">
-            Expand
-          </button>
           <div class="viewer-controls viewer-controls-inside" aria-label="Panorama controls">
             <button type="button" data-action="zoom-in">+</button>
             <button type="button" data-action="zoom-out">-</button>
@@ -270,18 +213,12 @@ function renderPanoramaMarkup(biome) {
 
 function bindPanoramaControls() {
   const viewport = panoramaSection.querySelector('.gallery-panorama-viewport');
-  const expandButton = panoramaSection.querySelector('#gallery-panorama-expand');
   const controlButtons = panoramaSection.querySelectorAll('.viewer-controls-inside button');
 
   inlinePanoramaViewport = viewport;
   if (!inlinePanoramaViewport) {
     return;
   }
-
-  expandButton?.addEventListener('click', async () => {
-    expandButton.setAttribute('aria-expanded', 'true');
-    await openPanoramaModal();
-  });
 
   controlButtons.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -384,30 +321,6 @@ modalCloseButtons.forEach((button) => {
   button.addEventListener('click', closeImageModal);
 });
 
-panoramaCloseButtons.forEach((button) => {
-  button.addEventListener('click', closePanoramaModal);
-});
-
-panoramaModalButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (!panoramaModalViewer) {
-      return;
-    }
-
-    const action = button.dataset.modalAction;
-    if (action === 'zoom-in') {
-      panoramaModalViewer.zoom(Math.min(100, panoramaModalViewer.getZoomLevel() + 9));
-    }
-    if (action === 'zoom-out') {
-      panoramaModalViewer.zoom(Math.max(0, panoramaModalViewer.getZoomLevel() - 9));
-    }
-    if (action === 'reset') {
-      panoramaModalViewer.rotate({ yaw: 0, pitch: 0 });
-      panoramaModalViewer.zoom(32);
-    }
-  });
-});
-
 modalPrev?.addEventListener('click', () => stepImageModal(-1));
 modalNext?.addEventListener('click', () => stepImageModal(1));
 
@@ -439,21 +352,11 @@ document.addEventListener('keydown', (event) => {
       stepImageModal(1);
     }
   }
-  if (!panoramaModal.hidden && event.key === 'Escape') {
-    closePanoramaModal();
-  }
 });
 
 window.addEventListener('resize', () => {
   if (inlinePanoramaViewer && inlinePanoramaViewport) {
     resizeViewer(inlinePanoramaViewer, inlinePanoramaViewport);
-  }
-
-  if (!panoramaModal.hidden && panoramaModalViewer) {
-    panoramaModalViewer.resize({
-      width: `${panoramaModalHost.clientWidth}px`,
-      height: `${panoramaModalHost.clientHeight}px`,
-    });
   }
 });
 
