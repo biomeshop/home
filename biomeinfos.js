@@ -405,7 +405,7 @@ export const biomeInfos = [
     name: 'Secluded Geode Desert',
     priceLabel: '$5m',
     priceValue: 5,
-    status: 'Available',
+    status: 'Sold',
     description: 'Only the one who conquered the sun may claim me.',
     imageKey: 'panorama_21.png',
     featured: false,
