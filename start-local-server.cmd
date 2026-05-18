@@ -5,16 +5,30 @@ cd /d "%~dp0"
 title BiomeShop Local Server
 
 set "NODE_CMD=node"
+set "LOCAL_NODE=%~dp0.tools\node-v24.15.0-win-x64\node.exe"
+set "CODEX_NODE=%USERPROFILE%\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe"
+set "PROGRAMFILES_NODE=%ProgramFiles%\nodejs\node.exe"
 
 where node >nul 2>nul
 if errorlevel 1 (
-  set "BUNDLED_NODE=C:\Users\Marketing\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe"
-  if exist "%BUNDLED_NODE%" (
-    set "NODE_CMD=%BUNDLED_NODE%"
+  if exist "%LOCAL_NODE%" (
+    set "NODE_CMD=%LOCAL_NODE%"
   ) else (
+    if exist "%CODEX_NODE%" set "NODE_CMD=%CODEX_NODE%"
+    if "%NODE_CMD%"=="node" if exist "%PROGRAMFILES_NODE%" set "NODE_CMD=%PROGRAMFILES_NODE%"
+  )
+)
+
+if "%NODE_CMD%"=="node" (
+  where node >nul 2>nul
+  if errorlevel 1 (
     echo Node.js was not found in PATH.
-    echo The bundled Codex Node runtime was also not found.
-    echo Install Node.js or restore the Codex runtime and then run this file again.
+    echo Checked these fallback locations:
+    echo   %LOCAL_NODE%
+    echo   %CODEX_NODE%
+    echo   %PROGRAMFILES_NODE%
+    echo.
+    echo Install Node.js or place a portable Node runtime in .tools\node-v24.15.0-win-x64\ and then run this file again.
     echo.
     pause
     exit /b 1
