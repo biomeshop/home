@@ -1,0 +1,51 @@
+name: Sync Biome App Data
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - biomeinfos.js
+      - scripts/export-biome-data.mjs
+      - scripts/gallery-manifest.mjs
+      - scripts/generate-gallery-manifest.mjs
+      - assets/biomeimages/**
+      - assets/panorama_*.png
+      - assets/visual-soon.png
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Refresh gallery manifest
+        run: node scripts/generate-gallery-manifest.mjs
+
+      - name: Refresh biome app files
+        run: node scripts/export-biome-data.mjs
+
+      - name: Commit generated files if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/biome-gallery-manifest.json data/biome.json data/biome-version.json
+          if git diff --cached --quiet; then
+            echo "No generated file changes."
+            exit 0
+          fi
+          git commit -m "chore: sync biome app data"
+          git push

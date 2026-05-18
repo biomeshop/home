@@ -1,0 +1,200 @@
+Biome App Implementation Guide
+
+Purpose
+This guide is for the separate `biomeapp` repo.
+The `home` repo is the only place the owner edits biome content.
+The `home` repo automatically publishes machine-readable files for `biomeapp`.
+Do not scrape the website UI. Use the generated JSON files.
+
+Source of truth and repos
+1. Repo `https://github.com/biomeshop/home`
+   This is the only content source of truth.
+   The only file the owner edits is `biomeinfos.js`.
+2. Repo `https://github.com/biomeshop/biomeapp`
+   This is the APK/mobile app.
+   It must fetch published data from the `home` repo output.
+
+Important contract
+1. The live website still uses `biomeinfos.js`.
+2. GitHub Actions in `home` generate:
+   `data/biome.json`
+   `data/biome-version.json`
+3. `biomeapp` must consume those generated files from the deployed site.
+4. Asset files are downloadable even though the app is in a different repo because they are
+   served from the public GitHub Pages site for `home`.
+
+Published URLs
+Base site:
+https://biomeshop.github.io/home/
+
+Data URLs:
+https://biomeshop.github.io/home/data/biome.json
+https://biomeshop.github.io/home/data/biome-version.json
+
+Asset URL examples:
+https://biomeshop.github.io/home/assets/panorama_6.png
+https://biomeshop.github.io/home/assets/biomeimages/6/a%20(1).png
+
+Why this works across two repos
+`biomeapp` does not need the asset files to live in its own repository.
+It only needs public HTTP URLs to download from.
+The `home` repo acts as both:
+1. the website repo
+2. the content and asset host for the app
+
+Files that biomeapp should use
+1. `data/biome-version.json`
+   Tiny file for fast update checks.
+2. `data/biome.json`
+   Full content file with biome details and asset URLs.
+
+What biome-version.json is for
+This file exists so the app can check for updates quickly without downloading the full biome file.
+
+Expected usage:
+1. App launches.
+2. App fetches `biome-version.json`.
+3. Compare remote `contentHash` with locally stored `contentHash`.
+4. If unchanged, do not fetch `biome.json` again.
+5. If changed, fetch `biome.json`.
+
+What biome.json contains
+The file contains:
+1. site base URL
+2. biome type options
+3. main panorama info
+4. biome list
+5. per-biome `revision`
+6. direct asset URLs for preview, panorama, and gallery images
+
+Important fields in each biome record
+1. `id`
+2. `name`
+3. `types`
+4. `status`
+5. `priceLabel`
+6. `priceValue`
+7. `description`
+8. `featured`
+9. `pano`
+10. `previewImageUrl`
+11. `panoramaImageUrl`
+12. `galleryFolderUrl`
+13. `galleryImages[]`
+14. `revision`
+
+How the app should sync efficiently
+Recommended startup flow:
+1. Read locally cached `biome-version.json` if present.
+2. Try to fetch remote `biome-version.json`.
+3. If remote fetch fails because the phone is offline:
+   use local cached metadata immediately.
+4. If remote fetch succeeds and `contentHash` is unchanged:
+   use local cached metadata immediately.
+5. If remote fetch succeeds and `contentHash` changed:
+   fetch remote `biome.json`
+   replace local cached metadata
+   update local cached `biome-version.json`
+
+How the app should handle opening a biome
+Recommended biome-open flow:
+1. User opens a biome details screen.
+2. Read that biome's local cached asset manifest if it exists.
+3. Compare local biome `revision` with the current biome `revision` from cached metadata.
+4. If the local revision matches and required files exist:
+   open local files immediately.
+5. If the local revision does not match and the phone is online:
+   download required assets for that biome
+   store them locally
+   update the local asset manifest for that biome
+   then open local files
+6. If the local revision does not match and the phone is offline:
+   if older local files exist, open those
+   if nothing has ever been downloaded, show a friendly "not downloaded yet" message
+
+What to download when a biome is opened
+At minimum download:
+1. `previewImageUrl`
+2. `panoramaImageUrl`
+3. every file in `galleryImages[]`
+
+Store them in a per-biome folder such as:
+`/app-local-storage/biomes/{biomeId}/`
+
+Suggested local cache structure
+1. `cache/biome-version.json`
+2. `cache/biome.json`
+3. `cache/biomes/{biomeId}/manifest.json`
+4. `cache/biomes/{biomeId}/preview.*`
+5. `cache/biomes/{biomeId}/panorama.*`
+6. `cache/biomes/{biomeId}/gallery/...`
+
+What to store in each local biome manifest
+1. biome `id`
+2. cached `revision`
+3. list of downloaded local file paths
+4. download timestamp
+5. optional integrity/hash info if desired
+
+Offline behavior requirements
+1. If metadata is cached locally, the app should open even without internet.
+2. If a biome's assets were downloaded before, the app should open that biome offline.
+3. If a biome was never downloaded and the phone is offline, show a clear fallback state.
+4. Never block app startup waiting on a large asset sync.
+
+Performance requirements
+1. Always fetch `biome-version.json` before `biome.json`.
+2. Never re-download unchanged biome assets.
+3. Download assets lazily per biome when opened.
+4. Use local files first when they match the current revision.
+5. Keep the online check lightweight and fast.
+
+Recommended stack for biomeapp
+Expo React Native is recommended for speed of development.
+Suggested building blocks:
+1. `expo-file-system` for download and local storage
+2. `@react-native-async-storage/async-storage` or local JSON files for metadata cache
+3. a panorama viewer that can use local file URIs
+4. standard image components using cached local files
+
+Do not do these things
+1. Do not parse HTML from the website.
+2. Do not scrape rendered cards from the website UI.
+3. Do not assume the app repo contains the image assets.
+4. Do not re-download all biomes on every launch.
+5. Do not depend on the owner manually updating multiple files.
+
+Home repo workflow summary
+1. Owner edits `biomeinfos.js` only.
+2. Owner commits and pushes to `home`.
+3. GitHub Actions generate `data/biome.json` and `data/biome-version.json`.
+4. GitHub Pages serves the website and those generated files.
+5. `biomeapp` fetches from the published URLs.
+
+How a newly added biome is picked up
+1. Add the new biome entry to `biomeinfos.js`.
+2. Add the panorama image under `assets/` if that biome has one.
+3. Add gallery images under `assets/biomeimages/{biomeId}/`.
+4. Keep the folder id exactly matching the biome `id`.
+5. After push, the `home` repo workflows regenerate the JSON files automatically.
+6. The app will see the new biome in `biome.json`.
+7. The app will download that biome's asset URLs when the biome is opened.
+
+Important constraint
+If a biome is added to `biomeinfos.js` but its referenced panorama image is missing, validation should fail.
+If a biome has no gallery folder yet, the biome can still exist, but it will simply have an empty gallery list.
+
+Why the auto-generation does not loop forever
+1. Generated files are stable.
+2. They do not include a fresh timestamp that changes every run.
+3. Versioning is based on stable content hashes and per-biome revisions.
+4. The sync workflow only commits when generated file contents actually changed.
+
+Instruction to the AI building biomeapp
+Build the app against `https://biomeshop.github.io/home/data/biome-version.json` and
+`https://biomeshop.github.io/home/data/biome.json`.
+Treat the `home` repo as the remote content host.
+Cache metadata locally.
+When a biome is opened, check its `revision` and use cached local assets whenever possible.
+If online and the biome revision changed, re-download only that biome's required assets.
+If offline, open previously downloaded assets automatically.

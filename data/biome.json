@@ -1,0 +1,1186 @@
+{
+  "schemaVersion": 1,
+  "sourceOfTruth": "biomeinfos.js",
+  "siteBaseUrl": "https://biomeshop.github.io/home/",
+  "biomeTypeOptions": [
+    [
+      "all",
+      "All biomes"
+    ],
+    [
+      "hybrid",
+      "Hybrid"
+    ],
+    [
+      "mushroom",
+      "Mushroom"
+    ],
+    [
+      "jungle",
+      "Jungle"
+    ],
+    [
+      "mountain",
+      "Mountain"
+    ],
+    [
+      "badlands",
+      "Badlands"
+    ],
+    [
+      "desert",
+      "Desert"
+    ],
+    [
+      "cherry",
+      "Cherry"
+    ],
+    [
+      "pale",
+      "Pale"
+    ],
+    [
+      "plains",
+      "Plains"
+    ],
+    [
+      "mangrove",
+      "Mangrove"
+    ]
+  ],
+  "mainBiomeShopPanorama": {
+    "imageKey": "panorama_0.png",
+    "pano": {
+      "fullWidth": 6985,
+      "fullHeight": 3493,
+      "croppedWidth": 6985,
+      "croppedHeight": 2580,
+      "croppedX": 0,
+      "croppedY": 457
+    },
+    "imagePath": "assets/panorama_0.png",
+    "imageUrl": "https://biomeshop.github.io/home/assets/panorama_0.png"
+  },
+  "biomes": [
+    {
+      "id": "1",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Medium Mushroom Island",
+      "priceLabel": "$7m",
+      "priceValue": 7,
+      "status": "Sold",
+      "description": "A well-sized island, perfect for starting your base.",
+      "imageKey": "panorama_1.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_1.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_1.png",
+      "panoramaImage": "assets/panorama_1.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_1.png",
+      "galleryFolder": "assets/biomeimages/1/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/1/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/1/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/1/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/1/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/1/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/1/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/1/a%20(3).png"
+        }
+      ],
+      "revision": "b4f41292867f35b5"
+    },
+    {
+      "id": "2",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Medium Mushroom Island",
+      "priceLabel": "$8m",
+      "priceValue": 8,
+      "status": "Available",
+      "description": "A mushroom shaped like a coiled serpent, waiting for you.",
+      "imageKey": "panorama_2.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_2.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_2.png",
+      "panoramaImage": "assets/panorama_2.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_2.png",
+      "galleryFolder": "assets/biomeimages/2/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/2/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/2/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/2/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/2/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/2/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/2/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/2/a%20(3).png"
+        }
+      ],
+      "revision": "2a51e92a889c9ef1"
+    },
+    {
+      "id": "3",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Large Mushroom Island",
+      "priceLabel": "$19m",
+      "priceValue": 19,
+      "status": "Available",
+      "description": "Do not underestimate its massive scale.",
+      "imageKey": "panorama_3.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_3.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_3.png",
+      "panoramaImage": "assets/panorama_3.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_3.png",
+      "galleryFolder": "assets/biomeimages/3/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/3/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/3/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/3/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/3/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/3/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/3/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/3/a%20(3).png"
+        }
+      ],
+      "revision": "605d6cb0df742b3b"
+    },
+    {
+      "id": "4",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Super Large Mushroom Island",
+      "priceLabel": "$23m",
+      "priceValue": 23,
+      "status": "Available",
+      "description": "Oh godfather, what a size-could this be the largest?",
+      "imageKey": "panorama_4.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_4.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_4.png",
+      "panoramaImage": "assets/panorama_4.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_4.png",
+      "galleryFolder": "assets/biomeimages/4/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/4/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/4/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/4/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/4/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/4/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/4/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/4/a%20(3).png"
+        }
+      ],
+      "revision": "229cef6db08a6b51"
+    },
+    {
+      "id": "5",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Smallest Mushroom Island",
+      "priceLabel": "$12m",
+      "priceValue": 12,
+      "status": "Available",
+      "description": "A rare natural generation, seen only once in a lifetime.",
+      "imageKey": "panorama_5.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_5.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_5.png",
+      "panoramaImage": "assets/panorama_5.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_5.png",
+      "galleryFolder": "assets/biomeimages/5/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/5/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/5/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/5/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/5/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/5/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/5/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/5/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/5/a%20(6).png"
+        }
+      ],
+      "revision": "76ff3f201d55ba9a"
+    },
+    {
+      "id": "6",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Mushroom Behind Spawn",
+      "priceLabel": "$25m",
+      "priceValue": 25,
+      "status": "Available",
+      "description": "The Mother of All Mushrooms rises before you.",
+      "imageKey": "panorama_6.png",
+      "featured": true,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_6.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_6.png",
+      "panoramaImage": "assets/panorama_6.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_6.png",
+      "galleryFolder": "assets/biomeimages/6/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/6/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/6/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/6/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/6/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/6/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/6/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/6/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(6).png"
+        },
+        {
+          "filename": "a (7).png",
+          "path": "assets/biomeimages/6/a (7).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(7).png"
+        },
+        {
+          "filename": "a (8).png",
+          "path": "assets/biomeimages/6/a (8).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(8).png"
+        },
+        {
+          "filename": "a (9).png",
+          "path": "assets/biomeimages/6/a (9).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/6/a%20(9).png"
+        }
+      ],
+      "revision": "87e629c4e1fd5938"
+    },
+    {
+      "id": "7",
+      "types": [
+        "hybrid",
+        "jungle",
+        "plains"
+      ],
+      "name": "Biome Blend Isle",
+      "priceLabel": "$4m",
+      "priceValue": 4,
+      "status": "Available",
+      "description": "Born in a sacred and unusual way-claim me.",
+      "imageKey": "panorama_7.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_7.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_7.png",
+      "panoramaImage": "assets/panorama_7.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_7.png",
+      "galleryFolder": "assets/biomeimages/7/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/7/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/7/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/7/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/7/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/7/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/7/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/7/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(6).png"
+        },
+        {
+          "filename": "a (7).png",
+          "path": "assets/biomeimages/7/a (7).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/7/a%20(7).png"
+        }
+      ],
+      "revision": "3ef781f45cf1e29a"
+    },
+    {
+      "id": "8",
+      "types": [
+        "badlands"
+      ],
+      "name": "Crimson Heart Badlands",
+      "priceLabel": "$3m",
+      "priceValue": 3,
+      "status": "Sold",
+      "description": "I stand at the center of temptation itself.",
+      "imageKey": "panorama_8.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_8.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_8.png",
+      "panoramaImage": "assets/panorama_8.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_8.png",
+      "galleryFolder": "assets/biomeimages/8/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/8/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/8/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/8/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/8/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/8/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/8/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/8/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/8/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/8/a%20(4).png"
+        }
+      ],
+      "revision": "7c8d7038921edc69"
+    },
+    {
+      "id": "9",
+      "types": [
+        "mountain"
+      ],
+      "name": "Icewraith Hollow",
+      "priceLabel": "$4m",
+      "priceValue": 4,
+      "status": "Available",
+      "description": "The peak of defense-build your fortress upon me.",
+      "imageKey": "panorama_9.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_9.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_9.png",
+      "panoramaImage": "assets/panorama_9.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_9.png",
+      "galleryFolder": "assets/biomeimages/9/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/9/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/9/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/9/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/9/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/9/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/9/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/9/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/9/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/9/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/9/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/9/a%20(5).png"
+        }
+      ],
+      "revision": "05d074b7dd7eefce"
+    },
+    {
+      "id": "10",
+      "types": [
+        "mountain"
+      ],
+      "name": "Frostbound Crown",
+      "priceLabel": "$4m",
+      "priceValue": 4,
+      "status": "Sold",
+      "description": "Once a king, now a cursed crown-shaped mountain.",
+      "imageKey": "panorama_10.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_10.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_10.png",
+      "panoramaImage": "assets/panorama_10.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_10.png",
+      "galleryFolder": "assets/biomeimages/10/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/10/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/10/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/10/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/10/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/10/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/10/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/10/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/10/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/10/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/10/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/10/a%20(5).png"
+        }
+      ],
+      "revision": "f82ae8fb541e374d"
+    },
+    {
+      "id": "11",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Small Mushroom Island",
+      "priceLabel": "$2.5m",
+      "priceValue": 2.5,
+      "status": "Sold",
+      "description": "Small, adorable, and waiting to be claimed by one.",
+      "imageKey": "visual-soon.png",
+      "featured": false,
+      "pano": null,
+      "previewImage": "assets/visual-soon.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/visual-soon.png",
+      "panoramaImage": "assets/visual-soon.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/visual-soon.png",
+      "galleryFolder": "assets/biomeimages/11/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/11/",
+      "galleryImages": [],
+      "revision": "4c15a6eaf66fd5db"
+    },
+    {
+      "id": "12",
+      "types": [
+        "mushroom"
+      ],
+      "name": "Medium Mushroom Island",
+      "priceLabel": "$9.5m",
+      "priceValue": 9.5,
+      "status": "Sold",
+      "description": "Hmmmmmmmmmmmmmmmmmm…",
+      "imageKey": "panorama_12.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_12.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_12.png",
+      "panoramaImage": "assets/panorama_12.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_12.png",
+      "galleryFolder": "assets/biomeimages/12/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/12/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/12/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/12/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/12/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/12/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/12/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/12/a%20(3).png"
+        }
+      ],
+      "revision": "3a6423a13ddc1787"
+    },
+    {
+      "id": "13",
+      "types": [
+        "cherry"
+      ],
+      "name": "Large Natural Cherry Grove",
+      "priceLabel": "$7.9m",
+      "priceValue": 7.9,
+      "status": "Sold",
+      "description": "I was the greatest of them all - 伝説級の存在.",
+      "imageKey": "panorama_13.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_13.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_13.png",
+      "panoramaImage": "assets/panorama_13.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_13.png",
+      "galleryFolder": "assets/biomeimages/13/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/13/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/13/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/13/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/13/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/13/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/13/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/13/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(6).png"
+        },
+        {
+          "filename": "a (7).png",
+          "path": "assets/biomeimages/13/a (7).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(7).png"
+        },
+        {
+          "filename": "a (8).png",
+          "path": "assets/biomeimages/13/a (8).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/13/a%20(8).png"
+        }
+      ],
+      "revision": "f9e5c92db493a71a"
+    },
+    {
+      "id": "14",
+      "types": [
+        "hybrid",
+        "mangrove",
+        "jungle"
+      ],
+      "name": "Large Natural Mangrove Grove",
+      "priceLabel": "$9.5m",
+      "priceValue": 9.5,
+      "status": "Available",
+      "description": "The witches’ bane-forge your cavern within me.",
+      "imageKey": "panorama_14.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_14.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_14.png",
+      "panoramaImage": "assets/panorama_14.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_14.png",
+      "galleryFolder": "assets/biomeimages/14/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/14/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/14/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/14/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/14/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/14/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/14/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/14/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/14/a%20(6).png"
+        }
+      ],
+      "revision": "32b149a11a0b4c06"
+    },
+    {
+      "id": "15",
+      "types": [
+        "pale"
+      ],
+      "name": "Large Mother Pale Biome",
+      "priceLabel": "$3.4m",
+      "priceValue": 3.4,
+      "status": "Sold",
+      "description": "The holy land of death, only the worthy may claim me.",
+      "imageKey": "panorama_15.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_15.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_15.png",
+      "panoramaImage": "assets/panorama_15.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_15.png",
+      "galleryFolder": "assets/biomeimages/15/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/15/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/15/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/15/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/15/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/15/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/15/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/15/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/15/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/15/a%20(4).png"
+        }
+      ],
+      "revision": "47c143db37d3882a"
+    },
+    {
+      "id": "16",
+      "types": [
+        "pale"
+      ],
+      "name": "Circular Hollow Pale Biome",
+      "priceLabel": "$4.8m",
+      "priceValue": 4.8,
+      "status": "Sold",
+      "description": "I am the child of death itself.",
+      "imageKey": "panorama_16.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_16.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_16.png",
+      "panoramaImage": "assets/panorama_16.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_16.png",
+      "galleryFolder": "assets/biomeimages/16/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/16/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/16/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/16/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/16/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/16/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/16/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/16/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/16/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/16/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/16/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/16/a%20(5).png"
+        }
+      ],
+      "revision": "6cf8dec4a0de29ae"
+    },
+    {
+      "id": "17",
+      "types": [
+        "hybrid",
+        "mangrove",
+        "jungle"
+      ],
+      "name": "Largest Mangrove Near Border",
+      "priceLabel": "$8.6m",
+      "priceValue": 8.6,
+      "status": "Available",
+      "description": "Come to the far west, my child.",
+      "imageKey": "panorama_17.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_17.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_17.png",
+      "panoramaImage": "assets/panorama_17.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_17.png",
+      "galleryFolder": "assets/biomeimages/17/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/17/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/17/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/17/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/17/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/17/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/17/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/17/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/17/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/17/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/17/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/17/a%20(5).png"
+        }
+      ],
+      "revision": "854e919cd7f1a0ac"
+    },
+    {
+      "id": "18",
+      "types": [
+        "hybrid",
+        "jungle",
+        "desert",
+        "plains"
+      ],
+      "name": "Cool Donut Island",
+      "priceLabel": "$2m",
+      "priceValue": 2,
+      "status": "Sold",
+      "description": "I was once a donut in a past life.",
+      "imageKey": "panorama_18.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_18.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_18.png",
+      "panoramaImage": "assets/panorama_18.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_18.png",
+      "galleryFolder": "assets/biomeimages/18/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/18/",
+      "galleryImages": [
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/18/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/18/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/18/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/18/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/18/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/18/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/18/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/18/a%20(5).png"
+        }
+      ],
+      "revision": "1a00b73f6d84eb48"
+    },
+    {
+      "id": "19",
+      "types": [
+        "jungle"
+      ],
+      "name": "Isolated Lonely Jungle",
+      "priceLabel": "$4m",
+      "priceValue": 4,
+      "status": "Sold",
+      "description": "I am alone… I need friends… *sniff*.",
+      "imageKey": "panorama_19.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_19.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_19.png",
+      "panoramaImage": "assets/panorama_19.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_19.png",
+      "galleryFolder": "assets/biomeimages/19/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/19/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/19/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/19/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/19/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/19/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/19/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/19/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/19/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/19/a%20(4).png"
+        }
+      ],
+      "revision": "92788b4bee7fead3"
+    },
+    {
+      "id": "20",
+      "types": [
+        "hybrid",
+        "jungle",
+        "plains"
+      ],
+      "name": "Mirror Mounds Islands",
+      "priceLabel": "$4m",
+      "priceValue": 4,
+      "status": "Available",
+      "description": "Do I look like something beyond legend?",
+      "imageKey": "panorama_20.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_20.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_20.png",
+      "panoramaImage": "assets/panorama_20.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_20.png",
+      "galleryFolder": "assets/biomeimages/20/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/20/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/20/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/20/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/20/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/20/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(4).png"
+        },
+        {
+          "filename": "a (5).png",
+          "path": "assets/biomeimages/20/a (5).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(5).png"
+        },
+        {
+          "filename": "a (6).png",
+          "path": "assets/biomeimages/20/a (6).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/20/a%20(6).png"
+        }
+      ],
+      "revision": "608f4d7447c2cebc"
+    },
+    {
+      "id": "21",
+      "types": [
+        "hybrid",
+        "desert",
+        "badlands"
+      ],
+      "name": "Secluded Geode Desert",
+      "priceLabel": "$5m",
+      "priceValue": 5,
+      "status": "Sold",
+      "description": "Only the one who conquered the sun may claim me.",
+      "imageKey": "panorama_21.png",
+      "featured": false,
+      "pano": {
+        "fullWidth": 6985,
+        "fullHeight": 3493,
+        "croppedWidth": 6985,
+        "croppedHeight": 2580,
+        "croppedX": 0,
+        "croppedY": 457
+      },
+      "previewImage": "assets/panorama_21.png",
+      "previewImageUrl": "https://biomeshop.github.io/home/assets/panorama_21.png",
+      "panoramaImage": "assets/panorama_21.png",
+      "panoramaImageUrl": "https://biomeshop.github.io/home/assets/panorama_21.png",
+      "galleryFolder": "assets/biomeimages/21/",
+      "galleryFolderUrl": "https://biomeshop.github.io/home/assets/biomeimages/21/",
+      "galleryImages": [
+        {
+          "filename": "a (1).png",
+          "path": "assets/biomeimages/21/a (1).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/21/a%20(1).png"
+        },
+        {
+          "filename": "a (2).png",
+          "path": "assets/biomeimages/21/a (2).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/21/a%20(2).png"
+        },
+        {
+          "filename": "a (3).png",
+          "path": "assets/biomeimages/21/a (3).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/21/a%20(3).png"
+        },
+        {
+          "filename": "a (4).png",
+          "path": "assets/biomeimages/21/a (4).png",
+          "url": "https://biomeshop.github.io/home/assets/biomeimages/21/a%20(4).png"
+        }
+      ],
+      "revision": "7c2b1b8e5f44dbbd"
+    }
+  ]
+}

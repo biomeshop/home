@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sourceOfTruth": "biomeinfos.js",
+  "siteBaseUrl": "https://biomeshop.github.io/home/",
+  "contentHash": "ef2050f9987ede1e668d8f5919b92c6f528cf329e10baad9bd6bcad6cc1bd7db",
+  "biomeCount": 21,
+  "biomes": [
+    {
+      "id": "1",
+      "revision": "b4f41292867f35b5",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "2",
+      "revision": "2a51e92a889c9ef1",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "3",
+      "revision": "605d6cb0df742b3b",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "4",
+      "revision": "229cef6db08a6b51",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "5",
+      "revision": "76ff3f201d55ba9a",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "6",
+      "revision": "87e629c4e1fd5938",
+      "status": "Available",
+      "featured": true
+    },
+    {
+      "id": "7",
+      "revision": "3ef781f45cf1e29a",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "8",
+      "revision": "7c8d7038921edc69",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "9",
+      "revision": "05d074b7dd7eefce",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "10",
+      "revision": "f82ae8fb541e374d",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "11",
+      "revision": "4c15a6eaf66fd5db",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "12",
+      "revision": "3a6423a13ddc1787",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "13",
+      "revision": "f9e5c92db493a71a",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "14",
+      "revision": "32b149a11a0b4c06",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "15",
+      "revision": "47c143db37d3882a",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "16",
+      "revision": "6cf8dec4a0de29ae",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "17",
+      "revision": "854e919cd7f1a0ac",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "18",
+      "revision": "1a00b73f6d84eb48",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "19",
+      "revision": "92788b4bee7fead3",
+      "status": "Sold",
+      "featured": false
+    },
+    {
+      "id": "20",
+      "revision": "608f4d7447c2cebc",
+      "status": "Available",
+      "featured": false
+    },
+    {
+      "id": "21",
+      "revision": "7c2b1b8e5f44dbbd",
+      "status": "Sold",
+      "featured": false
+    }
+  ]
+}
